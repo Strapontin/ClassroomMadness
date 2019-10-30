@@ -13,9 +13,11 @@ public class deplacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.Z))
         {
             transform.Translate(0.1f, 0, 0);
+            Debug.Log("ça touche");
         }
         if (Input.GetKey(KeyCode.Q))
         {
@@ -29,5 +31,12 @@ public class deplacement : MonoBehaviour
         {
             transform.Translate(0, 0, -0.1f);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        transform.Translate(0, 0, 0);
+        Debug.Log("ça touche");
     }
 }
