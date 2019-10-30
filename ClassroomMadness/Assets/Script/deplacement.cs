@@ -7,7 +7,7 @@ public class deplacement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+              Debug.Log("ça touche");  
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class deplacement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         
         transform.Translate(0, 0, 0);
