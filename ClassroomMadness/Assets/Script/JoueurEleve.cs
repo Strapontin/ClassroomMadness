@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class deplacement : MonoBehaviour
+public class JoueurEleve : MonoBehaviour
 {
-    public float horizontalSpeed = 2.0F;
-    public float verticalSpeed = 2.0F;
+    public float horizontalSpeed = 4.0F;
+    public float verticalSpeed = 4.0F;
     public bool enter = true;
     public Rigidbody rb;
-    // Start is called before the first frame update
+
+    public GameObject Joueur;
+    public Rigidbody Sarbacane;
+    public Transform origine;
+    public int force = 50;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -17,6 +23,8 @@ public class deplacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // Déplacement du personnage
 
         if (Input.GetKey(KeyCode.Z))
         {
@@ -35,9 +43,22 @@ public class deplacement : MonoBehaviour
         {
             transform.Translate(0, 0, -0.1f);
         }
+
+
+        // Déplacement de la caméra de façon gauche/droite
+        
         float h = horizontalSpeed * Input.GetAxis("Mouse X");
         //float v = verticalSpeed * Input.GetAxis("Mouse Y");
         transform.Rotate(0, h, 0);
+
+
+        // Apparition de la sarbacane
+
+        if (Input.GetKey(KeyCode.T) && GameObject.Find("Sarbacane(Clone)") == null)
+        {
+            Rigidbody instance;
+            instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
