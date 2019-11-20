@@ -12,7 +12,6 @@ public class JoueurEleve : MonoBehaviour
     public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
-    public int force = 50;
 
 
     void Start()
