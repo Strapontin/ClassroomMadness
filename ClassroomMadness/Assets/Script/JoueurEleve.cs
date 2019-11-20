@@ -12,7 +12,6 @@ public class JoueurEleve : MonoBehaviour
     public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
-    public int force = 50;
 
 
     void Start()
@@ -26,20 +25,20 @@ public class JoueurEleve : MonoBehaviour
 
         // Déplacement du personnage
 
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.I))
         {
             transform.Translate(0.1f, 0, 0);
 
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.J))
         {
             transform.Translate(0, 0, 0.1f);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.K))
         {
             transform.Translate(-0.1f, 0, 0);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.L))
         {
             transform.Translate(0, 0, -0.1f);
         }
