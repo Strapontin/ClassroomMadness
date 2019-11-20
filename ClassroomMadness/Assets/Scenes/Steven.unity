@@ -609,6 +609,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: -43.213, y: 0.142, z: -0.349}
+--- !u!4 &140573866 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400072, guid: 946fbd5d27c398d40815dac1f935e00c,
+    type: 3}
+  m_PrefabInstance: {fileID: 779320946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &251506326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400052, guid: 946fbd5d27c398d40815dac1f935e00c,
@@ -837,6 +843,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 779320946}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &559700459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400074, guid: 946fbd5d27c398d40815dac1f935e00c,
+    type: 3}
+  m_PrefabInstance: {fileID: 779320946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &657220096
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,11 +883,15 @@ MonoBehaviour:
   - {fileID: 1250082773351892132, guid: 103d42558e6986042b00cc508e020496, type: 3}
   - {fileID: 8186375735188369791, guid: 02b7367ea0681434e907179a871debb1, type: 3}
   - {fileID: 1250082773351892132, guid: 103d42558e6986042b00cc508e020496, type: 3}
+  - {fileID: 1250082773351892132, guid: 103d42558e6986042b00cc508e020496, type: 3}
+  - {fileID: 1250082773351892132, guid: 103d42558e6986042b00cc508e020496, type: 3}
   chaise:
   - {fileID: 833968267}
   - {fileID: 251506326}
   - {fileID: 1897967355}
   - {fileID: 529514374}
+  - {fileID: 559700459}
+  - {fileID: 140573866}
 --- !u!4 &657220098
 Transform:
   m_ObjectHideFlags: 0
