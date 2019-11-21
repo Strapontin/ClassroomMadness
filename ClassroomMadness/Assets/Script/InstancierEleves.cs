@@ -9,8 +9,8 @@ public class InstancierEleves : MonoBehaviour
 
 
 
-            // Start is called before the first frame update
-            void Start()
+    // Start is called before the first frame update
+    void Start()
     {
 
 
@@ -24,9 +24,9 @@ public class InstancierEleves : MonoBehaviour
             rb[randomIndex] = temp;
         }
 
-        for (int i= 0; i <= rb.Count; i++)
+        for (int i = 0; i < rb.Count; i++)
         {
-            Rigidbody instance ;
+            Rigidbody instance;
             instance = Instantiate(rb[i], chaise[i].position, chaise[i].rotation) as Rigidbody;
         }
 
@@ -45,6 +45,6 @@ public class InstancierEleves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
