@@ -62,7 +62,6 @@ public class JoueurEleve : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("entered");
         transform.Translate(0, 0, 0);
     }
 }
