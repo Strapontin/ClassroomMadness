@@ -18,7 +18,7 @@ public class Boulette : MonoBehaviour
         Destroy(gameObject, 3);
     }
 
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Prof"))
@@ -27,5 +27,5 @@ public class Boulette : MonoBehaviour
             UI.gameObject.GetComponent<Text>().text = ScoreUI + "";
             Destroy(gameObject);
         }
-    }
+    }*/
 }
