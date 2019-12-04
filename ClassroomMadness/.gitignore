@@ -61,3 +61,5 @@ crashlytics-build.properties
 
 # On ne prends pas le dossier de SteamVR car sans toucher au fichier, des conflits peuvent s'opérer
 SteamVR/
+SteamVR_Input/
+SteamVR_Resources/
