@@ -142,7 +142,7 @@ Transform:
   - {fileID: 1916210547}
   - {fileID: 1100280411}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &579370042
 GameObject:
@@ -290,6 +290,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+--- !u!4 &801366152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 801366151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &808892798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -379,7 +385,7 @@ GameObject:
   - component: {fileID: 979567011}
   - component: {fileID: 979567010}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: TpArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,12 +471,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979567009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.746499, y: 13, z: 22.81}
-  m_LocalScale: {x: 1, y: 1, z: 1.9055438}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.10000038, z: 6.2700005}
+  m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 801366152}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1100280410
 GameObject:
@@ -688,7 +694,7 @@ RectTransform:
   m_Children:
   - {fileID: 1154698041}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5477,7 +5483,7 @@ Transform:
   m_Children:
   - {fileID: 1185538950}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1437245494
 MonoBehaviour:
@@ -5726,7 +5732,7 @@ PrefabInstance:
     - target: {fileID: 8190947474403396220, guid: fac84f7e256a4f3429834d03a1c2589e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8190947474403396220, guid: fac84f7e256a4f3429834d03a1c2589e,
         type: 3}
