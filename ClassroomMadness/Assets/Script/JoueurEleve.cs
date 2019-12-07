@@ -7,16 +7,18 @@ public class JoueurEleve : MonoBehaviour
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
     public bool enter = true;
-    public Rigidbody rb;
+
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
-
-
+    public float gravity = 10f;
+    public float speed = 10f;
+    public CharacterController Cc;
+    Vector3 moveDir;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -24,25 +26,18 @@ public class JoueurEleve : MonoBehaviour
     {
 
         // Déplacement du personnage
+        if(Cc.isGrounded)
+        {
+            moveDir = new Vector3(Input.GetAxis("Vertical"), 0, 0);
+            moveDir = transform.TransformDirection(moveDir);
+            moveDir *= speed;
+        }
+        moveDir.y -= gravity * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.I))
-        {
-            transform.Translate(0.1f, 0, 0);
+        transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
 
-        }
-        if (Input.GetKey(KeyCode.J))
-        {
-            transform.Translate(0, 0, 0.1f);
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            transform.Translate(-0.1f, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            transform.Translate(0, 0, -0.1f);
-        }
 
+        Cc.Move(moveDir * Time.deltaTime);
 
         // Déplacement de la caméra de façon gauche/droite
         
@@ -62,7 +57,6 @@ public class JoueurEleve : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("entered");
         transform.Translate(0, 0, 0);
     }
 }

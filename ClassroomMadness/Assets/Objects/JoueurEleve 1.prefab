@@ -65,7 +65,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
@@ -81,7 +81,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8186375734887548678}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &8186375735188369784
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: 8186375735188369789}
   - component: {fileID: 8186375735188369790}
   - component: {fileID: 8186375735188369791}
+  - component: {fileID: 143625061372244194}
   m_Layer: 0
   m_Name: JoueurEleve 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,14 +192,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c0ff9169865b546951db53a7210718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 2
-  verticalSpeed: 2
+  horizontalSpeed: 0
+  verticalSpeed: 0
   enter: 1
-  rb: {fileID: 8186375735188369791}
   Joueur: {fileID: 8186375735694629208}
   Sarbacane: {fileID: 4239931567211208117, guid: 346384423a53fb248a4333cec9b3828d,
     type: 3}
   origine: {fileID: 8186375735694629215}
+  gravity: 10
+  speed: 10
+  Cc: {fileID: 0}
 --- !u!54 &8186375735188369791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,6 +218,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!143 &143625061372244194
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186375735188369784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.0000002
+  m_Radius: 0.500001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8186375735694629208
 GameObject:
   m_ObjectHideFlags: 0
