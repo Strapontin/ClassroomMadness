@@ -1956,7 +1956,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 946fbd5d27c398d40815dac1f935e00c, type: 3}
+  - {fileID: 2100000, guid: cedbe6d62963efc45be24ce5eb7645e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2645,6 +2645,7 @@ GameObject:
   - component: {fileID: 1275691991}
   - component: {fileID: 1276690839}
   - component: {fileID: 1280995703}
+  - component: {fileID: 1278893576}
   m_Layer: 0
   m_Name: Tableau
   m_TagString: Untagged
@@ -2652,6 +2653,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1278893576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278893575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 0.8133783, z: 2.0528624}
+  m_Center: {x: 0.042497177, y: 0.00016584774, z: 0.022645257}
 --- !u!1 &1278893601
 GameObject:
   m_ObjectHideFlags: 0
