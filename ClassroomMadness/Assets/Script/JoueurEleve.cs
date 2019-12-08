@@ -16,17 +16,22 @@ public class JoueurEleve : MonoBehaviour
     public float speed = 10f;
     public CharacterController Cc;
     Vector3 moveDir;
+    public Material[] material;
+    Renderer rend;
     void Start()
     {
         Cc = GetComponent<CharacterController>();
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+        rend.sharedMaterial = material[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // Déplacement du personnage
-        if(Cc.isGrounded)
+        if (Cc.isGrounded)
         {
             moveDir = new Vector3(Input.GetAxis("Vertical"), 0, 0);
             moveDir = transform.TransformDirection(moveDir);
@@ -48,15 +53,26 @@ public class JoueurEleve : MonoBehaviour
 
         // Apparition de la sarbacane
 
-        if (Input.GetKey(KeyCode.T) && GameObject.Find("Sarbacane(Clone)") == null)
+        if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
+        }
+        if(GameObject.Find("Sarbacane(Clone)") != null)
+        {
+            rend.sharedMaterial = material[1];
+        }
+        
+        if (Input.GetKey(KeyCode.P) && GameObject.Find("Sarbacane(Clone)") != null)
+        {
+            Destroy(GameObject.Find("Sarbacane(Clone)"));
+            rend.sharedMaterial = material[0];
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         transform.Translate(0, 0, 0);
+        
     }
 }

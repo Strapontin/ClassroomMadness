@@ -208,6 +208,9 @@ MonoBehaviour:
   gravity: 10
   speed: 10
   Cc: {fileID: 0}
+  material:
+  - {fileID: 2100000, guid: 71f836d81c6c50d43acb6336d32216bd, type: 2}
+  - {fileID: 2100000, guid: 78e7ea01bcbec9640921734140be8c0e, type: 2}
 --- !u!54 &8186375735188369791
 Rigidbody:
   m_ObjectHideFlags: 0
