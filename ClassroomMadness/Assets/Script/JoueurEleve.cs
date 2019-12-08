@@ -42,7 +42,7 @@ public class JoueurEleve : MonoBehaviour
         // Déplacement de la caméra de façon gauche/droite
         
         float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        //float v = verticalSpeed * Input.GetAxis("Mouse Y");
+        float v = verticalSpeed * Input.GetAxis("Mouse Y");
         transform.Rotate(0, h, 0);
 
 

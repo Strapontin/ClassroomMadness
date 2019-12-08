@@ -8,6 +8,7 @@ ModelImporter:
     400000: //RootNode
     400002: ruler:Ruler
     2100000: ruler_RulerMat
+    2100002: lambert2SG
     2300000: ruler:Ruler
     3300000: ruler:Ruler
     4300000: ruler:Ruler
