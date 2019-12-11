@@ -30,11 +30,12 @@ public class Sarbacane : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            do
-            {
-                force = force + 10;
-            }
-            while (force <= forceMax);
+                force = force + 1;
+        }
+
+        if(force >= forceMax)
+        {
+            force = forceMax;
         }
 
         // Tire la boulette de papier lorsqu'on relache le bouton de tir

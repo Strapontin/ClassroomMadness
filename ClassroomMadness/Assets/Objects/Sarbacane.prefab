@@ -112,3 +112,4 @@ MonoBehaviour:
   origine: {fileID: 4239931567210840468}
   force: 1
   forceMax: 200
+  forcePlus: 2
