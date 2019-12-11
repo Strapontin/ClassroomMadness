@@ -1,0 +1,24 @@
+newmtl PackedMaterial0
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Prof_packed0_diffuse.png
+bump  -bm 0 Prof_packed0_normal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Prof_packed0_specular.png
+Ns 0.06
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd habit_prof_Packed0_Diffuse.png
+Ni 1.00
