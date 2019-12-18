@@ -6,6 +6,9 @@ public class Brosse : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public int pvBoulette;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,7 @@ public class Brosse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void  OnCollisionEnter(Collision collision)
@@ -25,9 +28,16 @@ public class Brosse : MonoBehaviour
         if (collision.gameObject.CompareTag("boulette"))
         {
 
-            StartCoroutine(waitToDestroy());
+            pvBoulette -= 1;
+
+            //StartCoroutine(waitToDestroy());
             //Destroy(collision.gameObject);
 
+        }
+
+        if (pvBoulette==0 && collision.gameObject.CompareTag("boulette"))
+        {
+            Destroy(collision.gameObject);
         }
 
      IEnumerator waitToDestroy()

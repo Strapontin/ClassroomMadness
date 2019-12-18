@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boulette : MonoBehaviour
 {
+    public int pvBoulette;
     private Rigidbody rb;
     bool glue = false;
     Vector3 Pos;
@@ -21,7 +22,24 @@ public class Boulette : MonoBehaviour
             transform.position = Pos;
         }
         //Destroy(gameObject, 4);
+
+        if (pvBoulette <= 0)
+        {
+            Destroy(rb.gameObject);
+        }
+
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+                if (collision.gameObject.CompareTag("Brosse"))
+        {
+
+            pvBoulette -= 1;
+
+        }
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -34,5 +52,9 @@ public class Boulette : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         Pos = transform.position;
         glue = true;
+
+
+
+
     }
 }
