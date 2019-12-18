@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - boulette
+  - projectile
+  - FxTemporaire
+  - Brosse
   layers:
   - Default
   - TransparentFX
