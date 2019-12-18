@@ -6,7 +6,6 @@ public class JoueurEleve : MonoBehaviour
 {
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
-    public bool enter = true;
     public Rigidbody rb;
 
     public GameObject Joueur;
@@ -60,9 +59,4 @@ public class JoueurEleve : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("entered");
-        transform.Translate(0, 0, 0);
-    }
 }

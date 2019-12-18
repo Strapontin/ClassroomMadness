@@ -47,8 +47,6 @@ public class Boulette : MonoBehaviour
         //this.transform.parent = collision.gameObject.transform;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePosition;
-        //rb.constraints = RigidbodyConstraints.FreezePositionY;
-        //rb.constraints = RigidbodyConstraints.FreezePositionZ;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         Pos = transform.position;
         glue = true;

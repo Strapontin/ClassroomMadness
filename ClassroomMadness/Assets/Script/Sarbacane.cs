@@ -9,6 +9,7 @@ public class Sarbacane : MonoBehaviour
     public int force;
     public int forceMax;
     public int forcePlus;
+    private bool bouletteUp=false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +28,24 @@ public class Sarbacane : MonoBehaviour
         }
 
 
-        // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
+        // Préparer la boulette de papier pendant une durée 
+        if (Input.GetKeyUp(KeyCode.B) && bouletteUp == false)
+        {
+            StartCoroutine(preparerBoulette());
+        }
 
-        if (Input.GetKey(KeyCode.Space))
+        IEnumerator preparerBoulette()
+        {
+            yield return new WaitForSeconds(3.0f);
+            Debug.Log("Boulette prête");
+            bouletteUp = true;
+
+
+        }
+
+            // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
+
+            if (Input.GetKey(KeyCode.Space) && bouletteUp==true)
         {
                 force = force + forcePlus;
         }
@@ -41,12 +57,13 @@ public class Sarbacane : MonoBehaviour
 
         // Tire la boulette de papier lorsqu'on relache le bouton de tir
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && bouletteUp == true)
         {
             Rigidbody instance;
             instance = Instantiate(Boulette, origine.position, origine.rotation) as Rigidbody;
             instance.AddForce(transform.up * force);
             force = 1;
+            bouletteUp = false;
         }
 
     }
