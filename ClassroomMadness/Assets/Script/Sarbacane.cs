@@ -8,6 +8,7 @@ public class Sarbacane : MonoBehaviour
     public Transform origine;
     public int force;
     public int forceMax;
+    public int forcePlus;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class Sarbacane : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-                force = force + 1;
+                force = force + forcePlus;
         }
 
         if(force >= forceMax)
