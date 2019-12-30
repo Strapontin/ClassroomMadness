@@ -8,7 +8,6 @@ public class JoueurEleve : MonoBehaviour
     public float verticalSpeed = 4.0F;
     public bool enter = true;
 
-
     public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
@@ -18,6 +17,12 @@ public class JoueurEleve : MonoBehaviour
     Vector3 moveDir;
     public Material[] material;
     Renderer rend;
+    private bool canHeMove = true;
+    public Rigidbody rb;
+
+    GameObject ChaiseNear;
+    public Animator animator;
+
     void Start()
     {
         Cc = GetComponent<CharacterController>();
@@ -29,35 +34,45 @@ public class JoueurEleve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // Déplacement du personnage
-        if (Cc.isGrounded)
+        if(canHeMove)
         {
-            moveDir = new Vector3(Input.GetAxis("Vertical"), 0, 0);
-            moveDir = transform.TransformDirection(moveDir);
-            moveDir *= speed;
+            // Déplacement du personnage
+            if (Cc.isGrounded)
+            {
+                moveDir = new Vector3(Input.GetAxis("Vertical"), 0, 0);
+                moveDir = transform.TransformDirection(moveDir);
+                moveDir *= speed;
+            }
+
+            moveDir.y -= gravity * Time.deltaTime;
+
+            transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
+
+            Cc.Move(moveDir * Time.deltaTime);
         }
-        moveDir.y -= gravity * Time.deltaTime;
-
-        transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
 
 
-        Cc.Move(moveDir * Time.deltaTime);
 
-        // Déplacement de la caméra de façon gauche/droite
-        
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.Rotate(0, h, 0);
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
+        {
+            canHeMove = true;     
+        }
+        else if(canHeMove == true && Input.GetKeyDown(KeyCode.M))
+        {
+            canHeMove = false;
+
+            Debug.Log(ChaiseNear.transform.position);
+            gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
+        }
 
 
         // Apparition de la sarbacane
-
         if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
         }
+
         if(GameObject.Find("Sarbacane(Clone)") != null)
         {
             rend.sharedMaterial = material[1];
@@ -70,9 +85,30 @@ public class JoueurEleve : MonoBehaviour
         }
     }
 
+
     void OnCollisionEnter(Collision collision)
     {
         transform.Translate(0, 0, 0);
-        
+
+        if(collision.gameObject.CompareTag("Chaise"))
+        {
+            Debug.Log("chaise detecter");
+            Debug.Log(canHeMove);
+        }
+
+        if(collision.gameObject.CompareTag("Chaise"))
+        {
+            ChaiseNear = collision.gameObject;
+            Debug.Log(ChaiseNear.transform.position.x);
+        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Chaise"))
+        {
+            ChaiseNear = null;
+        }
     }
 }
