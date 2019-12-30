@@ -7,6 +7,7 @@ public class JoueurEleve : MonoBehaviour
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
     public bool enter = true;
+    public Rigidbody rb;
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
@@ -18,7 +19,6 @@ public class JoueurEleve : MonoBehaviour
     public Material[] material;
     Renderer rend;
     private bool canHeMove = true;
-    public Rigidbody rb;
 
     GameObject ChaiseNear;
     public Animator animator;
@@ -84,7 +84,6 @@ public class JoueurEleve : MonoBehaviour
             rend.sharedMaterial = material[0];
         }
     }
-
 
     void OnCollisionEnter(Collision collision)
     {

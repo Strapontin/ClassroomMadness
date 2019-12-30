@@ -5,45 +5,47 @@ using UnityEngine.UI;
 
 public class Boulette : MonoBehaviour
 {
-    private GameObject UI;
+    public int pvBoulette;
     private Rigidbody rb;
-    Vector3 Pos;
     bool glue = false;
+    Vector3 Pos;
+    
     // Start is called before the first frame update
     void Start()
     {
-        UI = GameObject.FindWithTag("ScorePC");
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(glue)
+        if (glue)
         {
             transform.position = Pos;
         }
-        //Destroy(gameObject, 3);
+
+        if (pvBoulette <= 0)
+        {
+            Destroy(rb.gameObject);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezePositionX;
-        rb.constraints = RigidbodyConstraints.FreezePositionY;
-        rb.constraints = RigidbodyConstraints.FreezePositionZ;
+        if (collision.gameObject.CompareTag("Brosse"))
+        {
+            pvBoulette -= 1;
+        }
+    }
 
-       
+
+    void OnCollisionEnter(Collision collision)
+    {
+        //this.transform.parent = collision.gameObject.transform;
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-       
         Pos = transform.position;
         glue = true;
-        /*
-        if (collision.gameObject.CompareTag("Prof"))
-        {
-            int ScoreUI = int.Parse(UI.gameObject.GetComponent<Text>().text) + 1;
-            UI.gameObject.GetComponent<Text>().text = ScoreUI + "";
-            Destroy(gameObject);
-        }*/
     }
 }

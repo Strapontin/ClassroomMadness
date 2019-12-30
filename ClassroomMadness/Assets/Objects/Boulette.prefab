@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 600521995}
   m_Layer: 0
   m_Name: Boulette
-  m_TagString: Untagged
+  m_TagString: boulette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8190947474403396096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039b7f55d5a743e43befbaef521ddb5a, type: 3}
+  m_Script: {fileID: 11500000, guid: dc58c6137d4ea04498bf36d604ef3648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &600521995

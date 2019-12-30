@@ -89,9 +89,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8190947474403396096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039b7f55d5a743e43befbaef521ddb5a, type: 3}
+  m_Script: {fileID: 11500000, guid: c9fa34773ca962040bd718faf5c6e858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvBoulette: 5
 --- !u!135 &600521995
 SphereCollider:
   m_ObjectHideFlags: 0

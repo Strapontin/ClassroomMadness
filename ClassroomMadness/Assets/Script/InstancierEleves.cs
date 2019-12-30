@@ -34,12 +34,12 @@ public class InstancierEleves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DateTime.Now.Subtract(d).TotalSeconds >= 5)
-        {
-            CreateEleves();
+        //if (DateTime.Now.Subtract(d).TotalSeconds >= 5)
+        //{
+        //    //CreateEleves();
 
-            d = DateTime.Now;
-        }
+        //    d = DateTime.Now;
+        //}
     }
 
 
