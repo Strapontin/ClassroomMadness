@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6835030019776420856}
   m_Layer: 0
   m_Name: Boulette
-  m_TagString: Untagged
+  m_TagString: Boulette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

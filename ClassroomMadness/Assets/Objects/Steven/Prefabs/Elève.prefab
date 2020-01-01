@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 3783656286448018884}
   m_Layer: 0
   m_Name: "El\xE8ve"
-  m_TagString: Untagged
+  m_TagString: Eleve
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,30 +9,33 @@ public class JoueurEleve : MonoBehaviour
     public Rigidbody rb;
 
     //public GameObject Joueur;
-    public Rigidbody Sarbacane;
+    //public Rigidbody Sarbacane;
     public Transform origine;
     public float gravity = 10f;
     public float speed = 10f;
     private CharacterController Cc;
     Vector3 moveDir;
-    public Material[] material;
+    //public Material[] material;
     Renderer rend;
     private bool canHeMove = true;
 
     GameObject ChaiseNear;
+    Transform sarbacane;
 
     void Start()
     {
         Cc = GetComponent<CharacterController>();
-        rend = GetComponent<Renderer>();
+        rend = GetComponentInChildren<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = material[0];
+        //rend.sharedMaterial = material[0];
+
+        sarbacane = gameObject.transform.Find("Sarbacane");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(canHeMove)
+        if (canHeMove)
         {
             // Déplacement du personnage
             if (Cc.isGrounded)
@@ -51,9 +54,9 @@ public class JoueurEleve : MonoBehaviour
 
         if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
         {
-            canHeMove = true;     
+            canHeMove = true;
         }
-        else if(canHeMove == true && Input.GetKeyDown(KeyCode.M))
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
         {
             canHeMove = false;
 
@@ -61,21 +64,14 @@ public class JoueurEleve : MonoBehaviour
             gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
         }
 
-        // Apparition de la sarbacane
-        if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
+        // Gestion de l'apparition de la sarbacane
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            Instantiate(Sarbacane, origine.position, origine.rotation, gameObject.transform.parent);
-        }
+            if (sarbacane.gameObject.activeSelf)
+                sarbacane.gameObject.SetActive(false);
 
-        if(GameObject.Find("Sarbacane(Clone)") != null)
-        {
-            rend.sharedMaterial = material[1];
-        }
-        
-        if (Input.GetKey(KeyCode.P) && GameObject.Find("Sarbacane(Clone)") != null)
-        {
-            Destroy(GameObject.Find("Sarbacane(Clone)"));
-            rend.sharedMaterial = material[0];
+            else
+                sarbacane.gameObject.SetActive(true);
         }
     }
 
@@ -83,13 +79,13 @@ public class JoueurEleve : MonoBehaviour
     {
         transform.Translate(0, 0, 0);
 
-        if(collision.gameObject.CompareTag("Chaise"))
+        if (collision.gameObject.CompareTag("Chaise"))
         {
             Debug.Log("chaise detecter");
             Debug.Log(canHeMove);
         }
 
-        if(collision.gameObject.CompareTag("Chaise"))
+        if (collision.gameObject.CompareTag("Chaise"))
         {
             ChaiseNear = collision.gameObject;
             Debug.Log(ChaiseNear.transform.position.x);

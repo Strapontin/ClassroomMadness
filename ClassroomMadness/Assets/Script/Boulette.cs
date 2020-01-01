@@ -41,11 +41,16 @@ public class Boulette : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        //this.transform.parent = collision.gameObject.transform;
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        Pos = transform.position;
-        glue = true;
+        if (collision.gameObject.tag != "Boulette" &&
+            collision.gameObject.tag != "EleveJoueur" &&
+            collision.gameObject.tag != "Eleve")
+        {
+            //this.transform.parent = collision.gameObject.transform;
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            Pos = transform.position;
+            glue = true;
+        }
     }
 }
