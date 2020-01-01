@@ -6,22 +6,20 @@ public class JoueurEleve : MonoBehaviour
 {
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
-    public bool enter = true;
     public Rigidbody rb;
 
-    public GameObject Joueur;
+    //public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
     public float gravity = 10f;
     public float speed = 10f;
-    public CharacterController Cc;
+    private CharacterController Cc;
     Vector3 moveDir;
     public Material[] material;
     Renderer rend;
     private bool canHeMove = true;
 
     GameObject ChaiseNear;
-    public Animator animator;
 
     void Start()
     {
@@ -51,8 +49,6 @@ public class JoueurEleve : MonoBehaviour
             Cc.Move(moveDir * Time.deltaTime);
         }
 
-
-
         if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
         {
             canHeMove = true;     
@@ -65,12 +61,10 @@ public class JoueurEleve : MonoBehaviour
             gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
         }
 
-
         // Apparition de la sarbacane
         if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
         {
-            Rigidbody instance;
-            instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
+            Instantiate(Sarbacane, origine.position, origine.rotation, gameObject.transform.parent);
         }
 
         if(GameObject.Find("Sarbacane(Clone)") != null)
@@ -101,7 +95,6 @@ public class JoueurEleve : MonoBehaviour
             Debug.Log(ChaiseNear.transform.position.x);
         }
     }
-
 
     private void OnCollisionExit(Collision collision)
     {

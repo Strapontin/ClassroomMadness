@@ -27,17 +27,17 @@ public class Eraser : DraggableObject
         painter.ChangeColour(color);
     }
 
-    protected override void UpdateRotation(Quaternion targetRotation, float followingSpeed)
-    {
-        if ((paintReceiver.transform.position - transform.position).z < 0.3f)
-        {
-            Vector3 eulerRotation = targetRotation.eulerAngles;
-            eulerRotation.x = 0f;
-            eulerRotation.y = 0f;
+    //protected override void UpdateRotation(Quaternion targetRotation, float followingSpeed)
+    //{
+    //    if ((paintReceiver.transform.position - transform.position).z < 0.3f)
+    //    {
+    //        Vector3 eulerRotation = targetRotation.eulerAngles;
+    //        eulerRotation.x = 0f;
+    //        eulerRotation.y = 0f;
 
-            targetRotation = Quaternion.Euler(eulerRotation);
-        }
+    //        targetRotation = Quaternion.Euler(eulerRotation);
+    //    }
 
-        mRigidbody.rotation = Quaternion.Lerp(mRigidbody.rotation, targetRotation, Time.deltaTime * followingSpeed);
-    }
+    //    mRigidbody.rotation = Quaternion.Lerp(mRigidbody.rotation, targetRotation, Time.deltaTime * followingSpeed);
+    //}
 }
