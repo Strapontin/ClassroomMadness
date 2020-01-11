@@ -393,11 +393,6 @@ namespace Valve.VR.InteractionSystem
                 }
             }
 
-            if (GameObject.Find("Regle(Clone)") == null)
-            {
-                DetachObject(GameObject.Find("Regle(Clone)"), false);
-            }
-
             if (currentAttachedObject)
             {
                 currentAttachedObject.SendMessage("OnHandFocusLost", this, SendMessageOptions.DontRequireReceiver);
@@ -603,7 +598,6 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         public void DetachObject(GameObject objectToDetach, bool restoreOriginalParent = true)
         {
-            
             int index = attachedObjects.FindIndex(l => l.attachedObject == objectToDetach);
             if (index != -1)
             {
@@ -656,7 +650,6 @@ namespace Valve.VR.InteractionSystem
 
                 if (attachedObjects[index].HasAttachFlag(AttachmentFlags.TurnOffGravity))
                 {
-               
                     if (attachedObjects[index].attachedObject != null)
                     {
                         if (attachedObjects[index].attachedRigidbody != null)

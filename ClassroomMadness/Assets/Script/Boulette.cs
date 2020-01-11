@@ -9,6 +9,7 @@ public class Boulette : MonoBehaviour
     private Rigidbody rb;
     Vector3 Pos;
     bool glue = false;
+
     // Start is called before the first frame update
     void Start()
     {
