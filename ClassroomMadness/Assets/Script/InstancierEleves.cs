@@ -6,6 +6,7 @@ public class InstancierEleves : MonoBehaviour
 {
     public List<Rigidbody> rb = new List<Rigidbody>();
     public List<Transform> chaise = new List<Transform>();
+    public List<Transform> place = new List<Transform>();
 
 
 
@@ -28,7 +29,9 @@ public class InstancierEleves : MonoBehaviour
         for (int i = 0; i < rb.Count; i++)
         {
             Rigidbody instance;
-            instance = Instantiate(rb[i], chaise[i].position, chaise[i].rotation) as Rigidbody;
+            place[i].position = chaise[i].position + new Vector3(0.1f, -0.80f, 0.1f);
+            place[i].rotation = chaise[i].rotation;
+            instance = Instantiate(rb[i], place[i].position, place[i].rotation ) as Rigidbody;
         }
 
 

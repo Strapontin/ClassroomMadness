@@ -6,56 +6,131 @@ public class JoueurEleve : MonoBehaviour
 {
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
-    public Rigidbody rb;
+    public bool enter = true;
+
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
     public Transform origine;
+    public float gravity = 10f;
+    public float speed = 10f;
+    public CharacterController Cc;
+    Vector3 moveDir;
+    private float distanceMove;
+    public Material[] material;
+    Renderer rend;
+    private bool canHeMove = true;
+    public Rigidbody rb;
 
-
+    GameObject ChaiseNear;
+    public Animator animator;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        Cc = GetComponent<CharacterController>();
+        rend = GetComponent<Renderer>();
+        rend.enabled = true;
+        rend.sharedMaterial = material[0];
+        animator = GetComponent<Animator>();
+        Debug.Log(distanceMove);
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceMove = Vector3.Distance(moveDir, new Vector3(0, 0, 0));
+        Debug.Log(distanceMove);
 
-        // Déplacement du personnage
 
-        if (Input.GetKey(KeyCode.I))
+        if (canHeMove)
         {
-            transform.Translate(0.1f, 0, 0);
+            // Déplacement du personnage
+            if (Cc.isGrounded)
+            {
+                moveDir = new Vector3(0, 0, Input.GetAxis("Vertical"));
+                moveDir = transform.TransformDirection(moveDir);
+                moveDir *= speed;
+            }
+            moveDir.y -= gravity * Time.deltaTime;
+
+            transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
+
+            Cc.Move(moveDir * Time.deltaTime);
 
         }
-        if (Input.GetKey(KeyCode.J))
+
+        if (distanceMove > 2f && Input.GetAxis("Vertical") < 0)
         {
-            transform.Translate(0, 0, 0.1f);
+            animator.SetBool("Walk Back", true);
+            speed = 5f;
         }
-        if (Input.GetKey(KeyCode.K))
+           else if (distanceMove > 2f && Input.GetAxis("Vertical") > 0)
         {
-            transform.Translate(-0.1f, 0, 0);
+            animator.SetBool("New Bool", true);
+            speed = 10f;
         }
-        if (Input.GetKey(KeyCode.L))
+        else
         {
-            transform.Translate(0, 0, -0.1f);
+            animator.SetBool("New Bool", false);
+            animator.SetBool("Walk Back", false);
+            speed = 10f;
         }
 
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
+        {
+            canHeMove = true;
 
-        // Déplacement de la caméra de façon gauche/droite
-        
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.Rotate(0, h, 0);
+
+        }
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
+        {
+            canHeMove = false;
+
+            Debug.Log(ChaiseNear.transform.position);
+            gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
+        }
 
 
         // Apparition de la sarbacane
 
-        if (Input.GetKey(KeyCode.T) && GameObject.Find("Sarbacane(Clone)") == null)
+        if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
+        }
+        if (GameObject.Find("Sarbacane(Clone)") != null)
+        {
+            rend.sharedMaterial = material[1];
+        }
+
+        if (Input.GetKey(KeyCode.P) && GameObject.Find("Sarbacane(Clone)") != null)
+        {
+            Destroy(GameObject.Find("Sarbacane(Clone)"));
+            rend.sharedMaterial = material[0];
+        }
+        //-----------------------------------------------------------------//
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        transform.Translate(0, 0, 0);
+        if (collision.gameObject.CompareTag("Chaise"))
+        {
+            Debug.Log("chaise detecter");
+            Debug.Log(canHeMove);
+        }
+
+        if (collision.gameObject.CompareTag("Chaise"))
+        {
+            ChaiseNear = collision.gameObject;
+            Debug.Log(ChaiseNear.transform.position.x);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Chaise"))
+        {
+            ChaiseNear = null;
         }
     }
 
