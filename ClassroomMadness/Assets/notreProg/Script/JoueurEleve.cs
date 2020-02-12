@@ -99,14 +99,9 @@ public class JoueurEleve : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Chaise"))
         {
-
             ChaiseNear = collision.gameObject;
             Debug.Log(ChaiseNear.transform.position.x);
-
         }
-
-
-
     }
 
     private void OnCollisionExit(Collision collision)
@@ -114,7 +109,6 @@ public class JoueurEleve : MonoBehaviour
         if (collision.gameObject.CompareTag("Chaise"))
         {
             ChaiseNear = null;
-           
         }
     }
 }
