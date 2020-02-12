@@ -8,6 +8,9 @@ public class JoueurEleve : MonoBehaviour
     public float verticalSpeed = 4.0F;
     public bool enter = true;
 
+    public Transform Camera;
+    private Transform emp_Camera_Debout;
+    public Transform emp_Camera_Assis;
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
@@ -26,11 +29,13 @@ public class JoueurEleve : MonoBehaviour
     public Animator animator;
     void Start()
     {
+        emp_Camera_Debout.position = Camera.position;
         Cc = GetComponent<CharacterController>();
         rend = GetComponent<Renderer>();
         rend.enabled = true;
         rend.sharedMaterial = material[0];
         animator = GetComponent<Animator>();
+        canHeMove = false;
         Debug.Log(distanceMove);
     }
 
@@ -38,7 +43,16 @@ public class JoueurEleve : MonoBehaviour
     void Update()
     {
         distanceMove = Vector3.Distance(moveDir, new Vector3(0, 0, 0));
-        Debug.Log(distanceMove);
+
+        // Position de la caméra lorsqu'il est assis ou debout, la tête lors de l'animation assis et debout ne se trouve pas au même endroit 
+        if (canHeMove == true)
+        {
+            Camera.position = emp_Camera_Assis.position;
+        }
+        else
+        {
+            Camera.position = emp_Camera_Debout.position;
+        }
 
 
         if (canHeMove)
@@ -65,12 +79,12 @@ public class JoueurEleve : MonoBehaviour
         }
            else if (distanceMove > 2f && Input.GetAxis("Vertical") > 0)
         {
-            animator.SetBool("New Bool", true);
+            animator.SetBool("Run", true);
             speed = 10f;
         }
         else
         {
-            animator.SetBool("New Bool", false);
+            animator.SetBool("Run", false);
             animator.SetBool("Walk Back", false);
             speed = 10f;
         }
@@ -78,7 +92,7 @@ public class JoueurEleve : MonoBehaviour
         if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
         {
             canHeMove = true;
-
+            animator.SetBool("Sit", false);
 
         }
         else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
@@ -87,6 +101,8 @@ public class JoueurEleve : MonoBehaviour
 
             Debug.Log(ChaiseNear.transform.position);
             gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
+            rb.isKinematic = true;
+            animator.SetBool("Sit", true);
         }
 
 
@@ -112,6 +128,8 @@ public class JoueurEleve : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+
+
         transform.Translate(0, 0, 0);
         if (collision.gameObject.CompareTag("Chaise"))
         {
