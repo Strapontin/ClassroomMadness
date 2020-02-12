@@ -30,17 +30,19 @@ public class Boulette : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+/*    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Brosse"))
         {
             pvBoulette -= 1;
         }
-    }
+    }*/
 
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.tag);
+
         if (collision.gameObject.tag != "Boulette" &&
             collision.gameObject.tag != "EleveJoueur" &&
             collision.gameObject.tag != "Eleve")
@@ -51,6 +53,12 @@ public class Boulette : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             Pos = transform.position;
             glue = true;
+        }
+
+        Debug.Log("Nom = " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Brosse"))
+        {
+            pvBoulette -= 1;
         }
     }
 }
