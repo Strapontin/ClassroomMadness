@@ -62,7 +62,7 @@ Transform:
   m_Children:
   - {fileID: 3024747168187626892}
   m_Father: {fileID: 8176525840919474085}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5569728660784231146
 Camera:
@@ -126,8 +126,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc75e6ab1be97a449d7eac1edd6e438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBody: {fileID: 8176525840919474085}
   speedH: 2
   speedV: 2
+--- !u!1 &2993460336049250625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6215065096717299180}
+  m_Layer: 0
+  m_Name: emp_CameraDebout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6215065096717299180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993460336049250625}
+  m_LocalRotation: {x: 0.996931, y: 0.0000002580295, z: 0.0000002580295, w: 0.07828513}
+  m_LocalPosition: {x: 0.0005340576, y: 1.5978193, z: 0.035064697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8176525840919474085}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3906281900612925509
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +256,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8176525840919474085}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8176525840919114241
 GameObject:
@@ -1458,6 +1489,7 @@ Transform:
   - {fileID: 8176525840919473715}
   - {fileID: 8176525840919473717}
   - {fileID: 63065301650959349}
+  - {fileID: 6215065096717299180}
   - {fileID: 2888331276460909454}
   - {fileID: 7600385104167219576}
   m_Father: {fileID: 0}
@@ -1514,6 +1546,7 @@ MonoBehaviour:
   verticalSpeed: 4
   enter: 1
   Camera: {fileID: 2888331276460909454}
+  emp_Camera_Debout: {fileID: 6215065096717299180}
   emp_Camera_Assis: {fileID: 7600385104167219576}
   Joueur: {fileID: 3906281900612925509}
   Sarbacane: {fileID: 4239931567211208117, guid: 346384423a53fb248a4333cec9b3828d,

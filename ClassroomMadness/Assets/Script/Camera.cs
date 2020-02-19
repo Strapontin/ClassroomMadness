@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    public float mouseSensitivity = 100f;
 
-   
+    public Transform playerBody;
 
-    public float speedH = 2.0f;
-    public float speedV = 2.0f;
+    private float xRotation = 0f;
 
-    private float yaw = 0.0f;
-    private float pitch = 0.0f;
 
-    private float xmin = -30f;
-    private float xmax = 50f;
-    private float ymin = -90f;
-    private float ymax = 90f;
+    //public float speedH = 2.0f;
+    //public float speedV = 2.0f;
+
+    //private float ver = 0.0f;
+    //private float hor = 0.0f;
+
+    //private float xmin = -30f;
+    //private float xmax = 50f;
+    //private float ymin = -90f;
+    //private float ymax = 90f;
 
 
     // Use this for initialization
@@ -28,30 +32,46 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Variable pour le déplacement de l'axe Y
-        yaw += speedH * Input.GetAxis("Mouse X");
 
-        // Variable pour le déplacement de l'axe X
-        pitch -= speedV * Input.GetAxis("Mouse Y");
+        // Caméra lorsque le personnage est debout (je ferais un if selon la situation du perso)
 
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Délimiter la rotation de l'axe de Y
-        if (yaw < ymin)
-        {
-            yaw = ymin;
-        }
-        else if (yaw > ymax){
-            yaw = ymax;
-        }
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, 0f, 0f);
 
-        // Délimiter la rotation de l'axe de X
-        if (pitch < xmin)
-        {
-            pitch = xmin;
-        }
-        else if (pitch > xmax){
-            pitch = xmax;
-        }
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
+
+
+        // Caméra lorsque le joueur est assis
+
+        //// Variable pour le déplacement de l'axe Y
+        //hor += speedH * Input.GetAxis("Mouse X");
+
+        //// Variable pour le déplacement de l'axe X
+        //ver -= speedV * Input.GetAxis("Mouse Y");
+
+        //transform.eulerAngles = new Vector3(ver, hor, 0.0f);
+
+        //// Délimiter la rotation de l'axe de Y
+        //if (hor < ymin)
+        //{
+        //    hor = ymin;
+        //}
+        //else if (hor > ymax){
+        //    hor = ymax;
+        //}
+
+        //// Délimiter la rotation de l'axe de X
+        //if (ver < xmin)
+        //{
+        //    ver = xmin;
+        //}
+        //else if (ver > xmax){
+        //    ver = xmax;
+        //}
     }
 }

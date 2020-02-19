@@ -9,7 +9,7 @@ public class JoueurEleve : MonoBehaviour
     public bool enter = true;
 
     public Transform Camera;
-    private Transform emp_Camera_Debout;
+    public Transform emp_Camera_Debout;
     public Transform emp_Camera_Assis;
 
     public GameObject Joueur;
@@ -22,14 +22,13 @@ public class JoueurEleve : MonoBehaviour
     private float distanceMove;
     public Material[] material;
     Renderer rend;
-    private bool canHeMove = true;
+    private bool canHeMove = false;
     public Rigidbody rb;
 
     GameObject ChaiseNear;
     public Animator animator;
     void Start()
     {
-        emp_Camera_Debout.position = Camera.position;
         Cc = GetComponent<CharacterController>();
         rend = GetComponent<Renderer>();
         rend.enabled = true;
@@ -47,11 +46,13 @@ public class JoueurEleve : MonoBehaviour
         // Position de la caméra lorsqu'il est assis ou debout, la tête lors de l'animation assis et debout ne se trouve pas au même endroit 
         if (canHeMove == true)
         {
-            Camera.position = emp_Camera_Assis.position;
-        }
-        else
-        {
             Camera.position = emp_Camera_Debout.position;
+            Cc.enabled = true;
+        }
+        else if (canHeMove == false)
+        {
+            Camera.position = emp_Camera_Assis.position;
+            Cc.enabled = false;
         }
 
 
@@ -92,6 +93,7 @@ public class JoueurEleve : MonoBehaviour
         if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
         {
             canHeMove = true;
+            Cc.enabled = true;
             animator.SetBool("Sit", false);
 
         }
@@ -99,8 +101,7 @@ public class JoueurEleve : MonoBehaviour
         {
             canHeMove = false;
 
-            Debug.Log(ChaiseNear.transform.position);
-            gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
+            //gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
             rb.isKinematic = true;
             animator.SetBool("Sit", true);
         }

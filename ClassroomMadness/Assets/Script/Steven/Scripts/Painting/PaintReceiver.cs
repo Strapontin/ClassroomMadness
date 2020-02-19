@@ -17,6 +17,8 @@ public class PaintReceiver : MonoBehaviour
 	private int textureWidth;
 	private int textureHeight;
 
+    private int count = 1;
+
     private bool wasModified = false;
 
     private void Awake()
@@ -44,11 +46,21 @@ public class PaintReceiver : MonoBehaviour
         if(wasModified)
         {
             newTexture.SetPixels32(currentTexture);
+            count++ ;
             newTexture.Apply();
+
+
 
             wasModified = false;
         }
     }
+
+    private void Update()
+    {
+        Debug.Log("Pixel" + count/100);
+    }
+
+
 
     /// <summary>
     /// Paints one stamp
