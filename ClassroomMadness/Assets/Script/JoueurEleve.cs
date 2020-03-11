@@ -22,7 +22,7 @@ public class JoueurEleve : MonoBehaviour
     private float distanceMove;
     public Material[] material;
     Renderer rend;
-    private bool canHeMove = false;
+    public bool canHeMove;
     public Rigidbody rb;
 
     GameObject ChaiseNear;
@@ -32,7 +32,7 @@ public class JoueurEleve : MonoBehaviour
         Cc = GetComponent<CharacterController>();
         rend = GetComponent<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = material[0];
+       // rend.sharedMaterial = material[0];
         animator = GetComponent<Animator>();
         canHeMove = false;
         Debug.Log(distanceMove);
