@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: e399832ad9ef1234baa889b393b1d0a7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Prof:Body
+    100004: Prof:Bottoms
+    100006: Prof:L_Hand
+    100008: Prof:L_Shoes
+    100010: Prof:R_Hand
+    100012: Prof:R_Shoes
+    100014: Prof:Tops
+    400000: //RootNode
+    400002: Prof:Body
+    400004: Prof:Bottoms
+    400006: Prof:L_Hand
+    400008: Prof:L_Shoes
+    400010: Prof:R_Hand
+    400012: Prof:R_Shoes
+    400014: Prof:Tops
+    2100000: Prof_PackedMaterial0
+    2100002: Prof_lambert2SG
+    2100004: Prof_handSG
+    2100006: Prof_shoes_swage
+    2100008: Prof_lambert2SG2
+    2100010: Prof_shoes_body
+    2100012: Prof_shoes_suture
+    2100014: Prof_shoes_sole
+    2300000: Prof:Body
+    2300002: Prof:Bottoms
+    2300004: Prof:L_Hand
+    2300006: Prof:L_Shoes
+    2300008: Prof:R_Hand
+    2300010: Prof:R_Shoes
+    2300012: Prof:Tops
+    3300000: Prof:Body
+    3300002: Prof:Bottoms
+    3300004: Prof:L_Hand
+    3300006: Prof:L_Shoes
+    3300008: Prof:R_Hand
+    3300010: Prof:R_Shoes
+    3300012: Prof:Tops
+    4300000: Prof:Body
+    4300002: Prof:Bottoms
+    4300004: Prof:L_Hand
+    4300006: Prof:L_Shoes
+    4300008: Prof:R_Hand
+    4300010: Prof:R_Shoes
+    4300012: Prof:Tops
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: Prof(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:Body
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:Bottoms
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:L_Hand
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:L_Shoes
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:R_Hand
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:R_Shoes
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Prof:Tops
+      parentName: Prof(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

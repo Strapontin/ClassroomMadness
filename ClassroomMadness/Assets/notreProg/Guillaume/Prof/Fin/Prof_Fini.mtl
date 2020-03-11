@@ -1,0 +1,66 @@
+newmtl Prof:PackedMaterial0
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Prof_packed0_diffuse.png
+bump  -bm 0 Prof_packed0_normal.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Prof_packed0_specular.png
+Ns 0.06
+newmtl Prof:handSG
+illum 4
+Kd 0.47 0.23 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Prof:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd habit_prof_Packed0_Diffuse.png
+Ni 1.00
+newmtl Prof:lambert2SG2
+illum 4
+Kd 0.02 0.02 0.02
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl Prof:shoes_body
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd shoes.jpg
+map_Ka shoes.jpg
+Ni 1.50
+Ks 0.32 0.32 0.32
+Ns 26.00
+newmtl Prof:shoes_sole
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd shoes.jpg
+map_Ka shoes.jpg
+Ni 1.50
+Ks 0.09 0.09 0.09
+Ns 10.00
+newmtl Prof:shoes_suture
+illum 4
+Kd 0.05 0.05 0.05
+Ka 0.06 0.06 0.06
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.09 0.09 0.09
+Ns 10.00
+newmtl Prof:shoes_swage
+illum 4
+Kd 0.04 0.04 0.03
+Ka 0.73 0.67 0.59
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.30 0.30 0.30
+Ns 60.00

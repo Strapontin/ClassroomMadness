@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8246055846369935932}
   m_Layer: 0
   m_Name: Regle
-  m_TagString: Untagged
+  m_TagString: objetAttrapable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
