@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.classroommadness.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "E:\\Anthony\\Cours\\Ydays\\ClassroomMadness\\LesVersionsPourMerge\\ClassroomMadness_VersionAnthony\\ClassroomMadness\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "D:\\ALEX\\Travail\\YDAYS\\ClassroomMadness\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "ClassroomMadness [Testing]"
