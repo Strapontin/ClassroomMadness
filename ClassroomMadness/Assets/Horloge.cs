@@ -26,7 +26,8 @@ public class Horloge : MonoBehaviour
         if (GameObject.Find("Aiguille").transform.rotation == Quaternion.Euler(0, 0, 180f))
         {
             // refresh la scene quand le temps est écoulé (test)
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
             Debug.Log("Fin du jeu");
         }
     }

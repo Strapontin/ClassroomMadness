@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc75e6ab1be97a449d7eac1edd6e438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 100
   playerBody: {fileID: 8176525840919474085}
   speedH: 2
   speedV: 2
@@ -1462,6 +1463,7 @@ GameObject:
   - component: {fileID: 8176525840919114632}
   - component: {fileID: 8176525840919114638}
   - component: {fileID: 8176525840919114628}
+  - component: {fileID: 8937621493042147982}
   m_Layer: 0
   m_Name: "El\xE8ve_Debout"
   m_TagString: Untagged
@@ -1556,6 +1558,7 @@ MonoBehaviour:
   speed: 10
   Cc: {fileID: 8176525840919114638}
   material: []
+  canHeMove: 0
   rb: {fileID: 6666434518890663157}
   animator: {fileID: 8176525840911712321}
 --- !u!136 &8176525840919114632
@@ -1627,6 +1630,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!81 &8937621493042147982
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176525840919114629}
+  m_Enabled: 1
 --- !u!1 &8176525840919114631
 GameObject:
   m_ObjectHideFlags: 0
