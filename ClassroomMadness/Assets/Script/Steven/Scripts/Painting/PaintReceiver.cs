@@ -17,6 +17,9 @@ public class PaintReceiver : MonoBehaviour
 	private int textureWidth;
 	private int textureHeight;
 
+    private AudioSource audioSource;
+    public AudioClip writeSounds;
+
     private int count = 1;
 
     private bool wasModified = false;
@@ -38,6 +41,8 @@ public class PaintReceiver : MonoBehaviour
         newTexture.GetPixels32().CopyTo(currentTexture, 0);
 
         GetComponent<MeshRenderer>().material.mainTexture = newTexture;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Apply changes only once per frame when all the pixels are drawn into the currentTexture
@@ -48,6 +53,10 @@ public class PaintReceiver : MonoBehaviour
             newTexture.SetPixels32(currentTexture);
             count++ ;
             newTexture.Apply();
+            if (audioSource.isPlaying != true)
+            {
+            audioSource.PlayOneShot(writeSounds, 1);
+            }
 
 
 

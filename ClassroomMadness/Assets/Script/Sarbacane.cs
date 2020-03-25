@@ -11,10 +11,13 @@ public class Sarbacane : MonoBehaviour
     public int forcePlus;
     private bool bouletteUp=false;
 
+    private AudioSource audioSource;
+    public AudioClip shootSounds;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +62,7 @@ public class Sarbacane : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space) && bouletteUp == true)
         {
+            audioSource.PlayOneShot(shootSounds,1);
             Rigidbody instance;
             instance = Instantiate(Boulette, origine.position, origine.rotation) as Rigidbody;
             instance.AddForce(transform.up * force);

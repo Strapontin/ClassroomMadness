@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Brosse
   - Chaise
+  - Floor
   layers:
   - Default
   - TransparentFX

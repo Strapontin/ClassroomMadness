@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class JoueurEleve : MonoBehaviour
+
 {
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
@@ -27,6 +30,12 @@ public class JoueurEleve : MonoBehaviour
 
     GameObject ChaiseNear;
     public Animator animator;
+
+    private AudioSource audioSource;
+    public AudioClip[] walkSounds;
+    public AudioClip chairSounds;
+
+
     void Start()
     {
         Cc = GetComponent<CharacterController>();
@@ -36,6 +45,10 @@ public class JoueurEleve : MonoBehaviour
         animator = GetComponent<Animator>();
         canHeMove = false;
         Debug.Log(distanceMove);
+
+        //Fetch the AudioSource from the GameObject
+        audioSource = GetComponent<AudioSource>();
+        //Ensure the toggle is set to true for the music to play at start-up
     }
 
     // Update is called once per frame
@@ -71,9 +84,10 @@ public class JoueurEleve : MonoBehaviour
 
             Cc.Move(moveDir * Time.deltaTime);
 
+
         }
 
-        if (distanceMove > 2f && Input.GetAxis("Vertical") < 0)
+            if (distanceMove > 2f && Input.GetAxis("Vertical") < 0)
         {
             animator.SetBool("Walk Back", true);
             speed = 5f;
@@ -82,6 +96,13 @@ public class JoueurEleve : MonoBehaviour
         {
             animator.SetBool("Run", true);
             speed = 10f;
+
+            //PlayFootStepAudio();
+            if (audioSource.isPlaying != true)
+            {
+                PlayFootStepAudio();
+            }
+
         }
         else
         {
@@ -94,7 +115,9 @@ public class JoueurEleve : MonoBehaviour
         {
             canHeMove = true;
             Cc.enabled = true;
+            audioSource.PlayOneShot(chairSounds);
             animator.SetBool("Sit", false);
+
 
         }
         else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
@@ -116,16 +139,33 @@ public class JoueurEleve : MonoBehaviour
         }
         if (GameObject.Find("Sarbacane(Clone)") != null)
         {
-            rend.sharedMaterial = material[1];
+            // rend.sharedMaterial = material[1];
         }
 
         if (Input.GetKey(KeyCode.P) && GameObject.Find("Sarbacane(Clone)") != null)
         {
             Destroy(GameObject.Find("Sarbacane(Clone)"));
-            rend.sharedMaterial = material[0];
+            // rend.sharedMaterial = material[0];
         }
         //-----------------------------------------------------------------//
+
+
+
     }
+
+
+
+    private void PlayFootStepAudio()
+    {
+            int n = Random.Range(1, walkSounds.Length);
+            audioSource.clip = walkSounds[n];
+            audioSource.PlayOneShot(audioSource.clip);
+            // move picked sound to index 0 so it's not picked next time
+            walkSounds[n] = walkSounds[0];
+            walkSounds[0] = audioSource.clip;
+            Debug.Log("marche");
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -154,3 +194,5 @@ public class JoueurEleve : MonoBehaviour
     }
 
 }
+
+
