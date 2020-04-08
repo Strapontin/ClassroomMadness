@@ -13,6 +13,7 @@ public class Sarbacane : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip shootSounds;
+    public AudioClip paperSounds;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +40,11 @@ public class Sarbacane : MonoBehaviour
 
         IEnumerator preparerBoulette()
         {
+            audioSource.PlayOneShot(paperSounds,1);
             yield return new WaitForSeconds(3.0f);
             Debug.Log("Boulette prête");
             bouletteUp = true;
-
+            yield return new WaitForSeconds(1.0f);
 
         }
 

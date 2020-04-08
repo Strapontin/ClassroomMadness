@@ -8,10 +8,14 @@ public class Boulette : MonoBehaviour
     private Rigidbody rb;
     bool glue = false;
     Vector3 Pos;
+    private AudioSource audioSource;
+    public AudioClip cleanSounds;
+    public AudioClip paperGlueSounds;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,10 +36,14 @@ public class Boulette : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-                if (collision.gameObject.CompareTag("Brosse"))
+        if (collision.gameObject.CompareTag("Brosse"))
         {
 
             pvBoulette -= 1;
+            if (audioSource.isPlaying != true)
+            {
+                audioSource.PlayOneShot(cleanSounds, 1);
+            }
 
         }
     }
@@ -49,6 +57,7 @@ public class Boulette : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         Pos = transform.position;
+        audioSource.PlayOneShot(paperGlueSounds, 1);
         glue = true;
 
 

@@ -19,8 +19,10 @@ public class PaintReceiver : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip writeSounds;
+    public AudioClip eraseSounds;
 
     private int count = 1;
+    private bool eraser = false;
 
     private bool wasModified = false;
 
@@ -48,14 +50,28 @@ public class PaintReceiver : MonoBehaviour
     // Apply changes only once per frame when all the pixels are drawn into the currentTexture
     private void LateUpdate()
     {
-        if(wasModified)
+        if(wasModified && eraser==true)
         {
             newTexture.SetPixels32(currentTexture);
             count++ ;
             newTexture.Apply();
             if (audioSource.isPlaying != true)
             {
-            audioSource.PlayOneShot(writeSounds, 1);
+            audioSource.PlayOneShot(eraseSounds, 1);
+            }
+
+
+            eraser = false;
+            wasModified = false;
+        }
+        else if(wasModified)
+        {
+            newTexture.SetPixels32(currentTexture);
+            count++;
+            newTexture.Apply();
+            if (audioSource.isPlaying != true)
+            {
+                audioSource.PlayOneShot(writeSounds, 1);
             }
 
 
@@ -64,9 +80,19 @@ public class PaintReceiver : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "eraser")
+        {
+            eraser = true;
+        }
+
+    }
+
     private void Update()
     {
         Debug.Log("Pixel" + count/100);
+        Debug.Log(eraser);
     }
 
 

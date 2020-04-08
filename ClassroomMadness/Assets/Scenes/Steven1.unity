@@ -2609,6 +2609,11 @@ PrefabInstance:
       propertyPath: writeSounds
       value: 
       objectReference: {fileID: 8300000, guid: 1b70965f68b0fa94caf27b81e787b93a, type: 3}
+    - target: {fileID: 1140966313393345835, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
+        type: 3}
+      propertyPath: eraseSounds
+      value: 
+      objectReference: {fileID: 8300000, guid: 98f01617da050404ca5bcae2ed6f4463, type: 3}
     - target: {fileID: 1140966313967860255, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
         type: 3}
       propertyPath: raycastLength
@@ -2618,6 +2623,26 @@ PrefabInstance:
         type: 3}
       propertyPath: raycastLength
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140966313834170729, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
+        type: 3}
+      propertyPath: m_TagString
+      value: eraser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140966313356688482, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
+        type: 3}
+      propertyPath: m_TagString
+      value: eraser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140966313638736799, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
+        type: 3}
+      propertyPath: m_TagString
+      value: eraser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140966314069310299, guid: 44cd68e50aec8ae4e8a33bd5dc09b409,
+        type: 3}
+      propertyPath: m_TagString
+      value: eraser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cd68e50aec8ae4e8a33bd5dc09b409, type: 3}
@@ -4417,6 +4442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTexture: {fileID: 2800000, guid: 3fb6201a227bcaa41a9453f6f8b376a4, type: 3}
   writeSounds: {fileID: 0}
+  eraseSounds: {fileID: 0}
 --- !u!114 &1597691241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4431,6 +4457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialTexture: {fileID: 2800000, guid: 3fb6201a227bcaa41a9453f6f8b376a4, type: 3}
   writeSounds: {fileID: 0}
+  eraseSounds: {fileID: 0}
 --- !u!1 &1607004940
 GameObject:
   m_ObjectHideFlags: 0

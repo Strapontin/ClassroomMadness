@@ -91,6 +91,11 @@ public class JoueurEleve : MonoBehaviour
         {
             animator.SetBool("Walk Back", true);
             speed = 5f;
+            if (audioSource.isPlaying != true)
+            {
+                PlayFootStepAudio();
+            }
+
         }
            else if (distanceMove > 2f && Input.GetAxis("Vertical") > 0)
         {

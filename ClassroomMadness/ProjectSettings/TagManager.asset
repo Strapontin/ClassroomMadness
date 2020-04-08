@@ -10,6 +10,7 @@ TagManager:
   - Brosse
   - Chaise
   - Floor
+  - eraser
   layers:
   - Default
   - TransparentFX
