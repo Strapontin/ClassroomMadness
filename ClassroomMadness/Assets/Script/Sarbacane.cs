@@ -27,17 +27,22 @@ public class Sarbacane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
-        if (Input.GetKey(KeyCode.Space))
+        // Ranger la sarbacane en la détruisant
+
+        if (Input.GetKey(KeyCode.Y))
         {
             force += forcePlus;
         }
 
-        if (force >= forceMax)
+
+        // Préparer la boulette de papier pendant une durée 
+        if (Input.GetKeyUp(KeyCode.B) && bouletteUp == false)
         {
-<<<<<<< HEAD
-            force = forceMax;
-=======
+            StartCoroutine(preparerBoulette());
+        }
+
+        IEnumerator preparerBoulette()
+        {
             audioSource.PlayOneShot(paperSounds,1);
             yield return new WaitForSeconds(3.0f);
             Debug.Log("Boulette prête");
