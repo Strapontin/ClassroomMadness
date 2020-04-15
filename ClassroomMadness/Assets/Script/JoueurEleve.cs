@@ -22,6 +22,7 @@ public class JoueurEleve : MonoBehaviour
     public float speed = 10f;
     public CharacterController Cc;
     Vector3 moveDir;
+    Vector3 moveDirHori;
     private float distanceMove;
     public Material[] material;
     Renderer rend;
@@ -77,12 +78,19 @@ public class JoueurEleve : MonoBehaviour
                 moveDir = new Vector3(0, 0, Input.GetAxis("Vertical"));
                 moveDir = transform.TransformDirection(moveDir);
                 moveDir *= speed;
+
+                moveDirHori = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+                moveDirHori = transform.TransformDirection(moveDirHori);
+                moveDirHori *= speed;
             }
             moveDir.y -= gravity * Time.deltaTime;
+            moveDirHori.y -= gravity * Time.deltaTime;
+            //transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
 
-            transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
 
             Cc.Move(moveDir * Time.deltaTime);
+
+            Cc.Move(moveDirHori * Time.deltaTime);
 
 
         }
@@ -109,12 +117,43 @@ public class JoueurEleve : MonoBehaviour
             }
 
         }
+
         else
         {
             animator.SetBool("Run", false);
             animator.SetBool("Walk Back", false);
             speed = 10f;
         }
+        
+        if ( Input.GetAxis("Horizontal") < 0 && canHeMove == true)
+        {
+            animator.SetBool("Left", true);
+            speed = 5f;
+            if (audioSource.isPlaying != true)
+            {
+                PlayFootStepAudio();
+            }
+
+        }
+        else if (Input.GetAxis("Horizontal") > 0 && canHeMove == true)
+        {
+            animator.SetBool("Right", true);
+            speed = 5f;
+
+            //PlayFootStepAudio();
+            if (audioSource.isPlaying != true)
+            {
+                PlayFootStepAudio();
+            }
+
+        }
+        else
+        {
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", false);
+            speed = 10f;
+        }
+
 
         if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
         {
@@ -137,21 +176,12 @@ public class JoueurEleve : MonoBehaviour
 
         // Apparition de la sarbacane
 
-        if (Input.GetKey(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
+        if (Input.GetKeyUp(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
         }
-        if (GameObject.Find("Sarbacane(Clone)") != null)
-        {
-            // rend.sharedMaterial = material[1];
-        }
 
-        if (Input.GetKey(KeyCode.P) && GameObject.Find("Sarbacane(Clone)") != null)
-        {
-            Destroy(GameObject.Find("Sarbacane(Clone)"));
-            // rend.sharedMaterial = material[0];
-        }
         //-----------------------------------------------------------------//
 
 

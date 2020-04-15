@@ -9,6 +9,7 @@ public class CameraPlayer : MonoBehaviour
     public Transform playerBody;
 
     private float xRotation = 0f;
+    private float yRotation = 0f;
 
 
     public float speedH = 2.0f;
@@ -34,7 +35,6 @@ public class CameraPlayer : MonoBehaviour
     void Update()
     {
 
-        // Caméra lorsque le personnage est debout (je ferais un if selon la situation du perso)
 
         // Bug quand on veut récuperer la valeur de la variable du joueur éléve quand il est assis ou pas:  GetComponent<JoueurEleve>().canHeMove = sit;
 
@@ -54,12 +54,18 @@ public class CameraPlayer : MonoBehaviour
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, 0f, 0f);
+            xRotation -= mouseX;
+
+            yRotation -= mouseY;
 
 
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+           
+            transform.localRotation = Quaternion.Euler(yRotation, mouseX, 0f);
             playerBody.Rotate(Vector3.up * mouseX);
+
+
+            Debug.Log("transform local rotation" + transform.localRotation);
+
 
         }
 

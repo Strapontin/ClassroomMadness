@@ -26,22 +26,21 @@ public class Sarbacane : MonoBehaviour
     {
         // Ranger la sarbacane en la détruisant
 
-        if (Input.GetKey(KeyCode.Y))
+        if (Input.GetKeyUp(KeyCode.I))
         {
             Destroy(gameObject, 1);
         }
 
 
         // Préparer la boulette de papier pendant une durée 
-        if (Input.GetKeyUp(KeyCode.B) && bouletteUp == false)
+        if ( bouletteUp == false)
         {
             StartCoroutine(preparerBoulette());
         }
 
         IEnumerator preparerBoulette()
         {
-            audioSource.PlayOneShot(paperSounds,1);
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(1.0f);
             Debug.Log("Boulette prête");
             bouletteUp = true;
             yield return new WaitForSeconds(1.0f);
