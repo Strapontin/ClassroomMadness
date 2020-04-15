@@ -8,9 +8,15 @@ TagManager:
   - ScorePC
   - Chaise
   - Brosse
+<<<<<<< HEAD
   - Boulette
   - EleveJoueur
   - Eleve
+=======
+  - Chaise
+  - Floor
+  - eraser
+>>>>>>> Steven
   layers:
   - Default
   - TransparentFX

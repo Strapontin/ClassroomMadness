@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class InstancierEleves : MonoBehaviour
 {
+<<<<<<< HEAD
     public List<GameObject> eleves;
     public List<Transform> chaise;
+=======
+    public List<Rigidbody> rb = new List<Rigidbody>();
+    public List<Transform> chaise = new List<Transform>();
+    public List<Transform> place = new List<Transform>();
+
+>>>>>>> Steven
 
     private DateTime d;
 
@@ -24,7 +31,14 @@ public class InstancierEleves : MonoBehaviour
 
         for (int i = 0; i < eleves.Count; i++)
         {
+<<<<<<< HEAD
             Instantiate(eleves[i], chaise[i].position, chaise[i].rotation);
+=======
+            Rigidbody instance;
+            place[i].position = chaise[i].position + new Vector3(0.1f, -0.80f, 0.1f);
+            place[i].rotation = chaise[i].rotation;
+            instance = Instantiate(rb[i], place[i].position, place[i].rotation ) as Rigidbody;
+>>>>>>> Steven
         }
 
         d = DateTime.Now;

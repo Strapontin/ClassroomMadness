@@ -48,7 +48,6 @@ public class Painter : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(ray.origin, ray.direction * raycastLength);
-
         if (paintReceiverCollider.Raycast(ray, out hit, raycastLength))
         {
             if (lastDrawPosition.HasValue && lastDrawPosition.Value != hit.textureCoord)
