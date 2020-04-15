@@ -6,6 +6,7 @@ public class InstancierEleves : MonoBehaviour
 {
     public List<Rigidbody> rb = new List<Rigidbody>();
     public List<Transform> chaise = new List<Transform>();
+    public List<Transform> place = new List<Transform>();
 
 
 
@@ -24,22 +25,16 @@ public class InstancierEleves : MonoBehaviour
             rb[randomIndex] = temp;
         }
 
+        // 
         for (int i = 0; i < rb.Count; i++)
         {
             Rigidbody instance;
-            instance = Instantiate(rb[i], chaise[i].position, chaise[i].rotation) as Rigidbody;
+            place[i].position = chaise[i].position + new Vector3(0f, -0.45f, -0.1f);
+            place[i].rotation = chaise[i].rotation;
+            instance = Instantiate(rb[i], place[i].position, place[i].rotation ) as Rigidbody;
         }
 
 
-
-        //Rigidbody instance;
-        //instance = Instantiate(rb[0], origineEleve1.position, origineEleve1.rotation) as Rigidbody;
-        //Rigidbody instance2;
-        //instance2 = Instantiate(rb[1], origineEleve2.position, origineEleve2.rotation) as Rigidbody;
-        //Rigidbody instance3;
-        //instance3 = Instantiate(rb[2], origineEleve3.position, origineEleve3.rotation) as Rigidbody;
-        //Rigidbody instance4;
-        //instance4 = Instantiate(rb[3], origineJoueur.position, origineJoueur.rotation) as Rigidbody;
     }
 
     // Update is called once per frame

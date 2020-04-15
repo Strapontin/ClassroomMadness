@@ -23,11 +23,23 @@ public class RegleScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
         {
             rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             Destroy(gameObject);
         }
+        print(collision.gameObject.name);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+        {
+            rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            Destroy(gameObject);
+        }
+        print(collision.gameObject.name);
     }
 }

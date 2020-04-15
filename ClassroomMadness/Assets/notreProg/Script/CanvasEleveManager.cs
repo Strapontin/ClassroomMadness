@@ -8,6 +8,7 @@ public class CanvasEleveManager : MonoBehaviour
     public GameObject ForceSarbacane2;
     public GameObject ForceSarbacane3;
     public GameObject ForceSarbacane4;
+    public GameObject ForceSarbacane5;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,40 +23,30 @@ public class CanvasEleveManager : MonoBehaviour
 
     public void SerbacaneForce(int force, int forceMax)
     {
-        if (force < forceMax / 4)
+        ForceSarbacane1.SetActive(false);
+        ForceSarbacane2.SetActive(false);
+        ForceSarbacane3.SetActive(false);
+        ForceSarbacane4.SetActive(false);
+        ForceSarbacane5.SetActive(false);
+        if (force == 0)
         {
             ForceSarbacane1.SetActive(true);
-            ForceSarbacane2.SetActive(false);
-            ForceSarbacane3.SetActive(false);
-            ForceSarbacane4.SetActive(false);
         }
-        else if (force >= forceMax / 4 && force <= forceMax / 2)
+        else if (force > 0 && force <= forceMax / 2)
         {
-            ForceSarbacane1.SetActive(false);
             ForceSarbacane2.SetActive(true);
-            ForceSarbacane3.SetActive(false);
-            ForceSarbacane4.SetActive(false);
         }
         else if (force == forceMax / 2)
         {
-            ForceSarbacane1.SetActive(false);
-            ForceSarbacane2.SetActive(false);
             ForceSarbacane3.SetActive(true);
-            ForceSarbacane4.SetActive(false);
         }
-        else if (force > forceMax - (forceMax / 4))
+        else if (force < forceMax - (forceMax / 3))
         {
-            ForceSarbacane1.SetActive(false);
-            ForceSarbacane2.SetActive(false);
-            ForceSarbacane3.SetActive(false);
             ForceSarbacane4.SetActive(true);
         }
-        else if(force == 1)
+        else if (force == forceMax)
         {
-            ForceSarbacane1.SetActive(false);
-            ForceSarbacane2.SetActive(false);
-            ForceSarbacane3.SetActive(false);
-            ForceSarbacane4.SetActive(false);
+            ForceSarbacane5.SetActive(true);
         }
     }
 }

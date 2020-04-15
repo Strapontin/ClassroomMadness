@@ -9,6 +9,8 @@ TagManager:
   - Chaise
   - MainVR
   - objetAttrapable
+  - eraser
+  - Stud
   layers:
   - Default
   - TransparentFX
@@ -20,9 +22,9 @@ TagManager:
   - 
   - PostProcessing
   - TeteProf
-  - 
-  - 
-  - 
+  - invisible total
+  - invisible prof
+  - "invisible el\xE8ve"
   - 
   - 
   - 
