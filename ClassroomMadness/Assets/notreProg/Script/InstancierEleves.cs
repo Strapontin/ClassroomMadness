@@ -22,6 +22,12 @@ public class InstancierEleves : MonoBehaviour
         print(PlayerPrefs.GetInt("RuleHastouchplayer") + "playerpref");
         if (PlayerPrefs.GetInt("RuleHastouchplayer") == 1)
         {
+
+            PlayerPrefs.SetInt("RuleHastouchplayer", 0);
+            while(GameObject.Find("EleveNPC(Clone)") != null)
+            {
+                Destroy(GameObject.Find("EleveNPC(Clone)"));
+            }
             spawnStudent();
         }
     }
