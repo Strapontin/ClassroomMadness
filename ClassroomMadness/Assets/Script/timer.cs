@@ -8,7 +8,6 @@ public class timer : MonoBehaviour
 {
     public Text TimerTxt;
     private float startTime;
-    private int limit = 5;
 
     public void LancementScene(int nbScene)
     {
@@ -24,30 +23,31 @@ public class timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Si le prof et l'eleve sont tout les 2 prets
-        if (GameObject.Find("menu_pc").GetComponent<Start_Menu>().EleveisReady == true && GameObject.Find("menu_vr").GetComponent<Start_Menu>().ProfisReady == true)
+        bool theTwoAreReady = GameObject.Find("menu_pc").GetComponent<Start_Menu>().EleveisReady;
+        switch (theTwoAreReady)
         {
-            //Si un des deux n'est plus pret (A terminer)
-            if (GameObject.Find("menu_pc").GetComponent<Start_Menu>().EleveisReady != true || GameObject.Find("menu_vr").GetComponent<Start_Menu>().ProfisReady != true)
-            {
-                startTime = 5;
+            case true:
+                //Le timer s'affiche
+                GameObject.Find("menu_pc").GetComponent<Start_Menu>().TextTimer.SetActive(true);
+                //Le bouton Pret disparait
+                GameObject.Find("menu_pc").GetComponent<Start_Menu>().Button_Ready.SetActive(false);
+
+                //Le timer est lancé
+                startTime -= 1 * Time.deltaTime;
+                //Changement de la valeur de timer en string pour ne garder que l'unité
+                TimerTxt.text = startTime.ToString("f0");
+
+                //Si le timer arrive à 0
+                if (startTime <= 0)
+                {
+                    //La scene principal commence
+                    LancementScene(1);
+                }
+                break;
+            case false:
+                //Le timer ne s'affiche pas
                 GameObject.Find("menu_pc").GetComponent<Start_Menu>().TextTimer.SetActive(false);
-            }
-            
-            //Afficher le compteur
-            GameObject.Find("menu_pc").GetComponent<Start_Menu>().TextTimer.SetActive(true);
-
-            startTime -= 1 * Time.deltaTime;
-
-            TimerTxt.text = startTime.ToString("f0");
-
-            if (startTime <= 0)
-            {
-                LancementScene(1);
-            }
-
-                
-            
+                break;
         }
     }
 }

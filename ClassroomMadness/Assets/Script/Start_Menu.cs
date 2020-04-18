@@ -19,7 +19,7 @@ public class Start_Menu : MonoBehaviour
     public GameObject Panel_Section_Pret_Prof;
     public GameObject TextTimer;
     public bool EleveisReady = false;
-    public bool ProfisReady = false;
+    public bool ProfisReady = true;
 
     //Fonction Start
     private void Start()
@@ -110,20 +110,20 @@ public class Start_Menu : MonoBehaviour
         Button_Ready.SetActive(false);
         Panel_check_prof_ready.SetActive(false);
     }
-    
+
     //Fonction Eleve Ready
     public void EleveReady()
     {
-       if(EleveisReady == false)
-       {
+        if (EleveisReady == false)
+        {
             EleveisReady = true;
             Panel_Section_Pret_Eleve.SetActive(true);
         }
-       else
-       {
+        else
+        {
             EleveisReady = false;
             Panel_Section_Pret_Eleve.SetActive(false);
-       }
+        }
     }
 
     //Fonction Prof Ready
