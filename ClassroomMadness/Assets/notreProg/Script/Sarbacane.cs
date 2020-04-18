@@ -9,7 +9,7 @@ public class Sarbacane : MonoBehaviour
     public int force;
     public int forceMax;
     public int forcePlus;
-    private bool bouletteUp=false;
+    private bool bouletteUp = false;
 
     private AudioSource audioSource;
     public AudioClip shootSounds;
@@ -26,36 +26,35 @@ public class Sarbacane : MonoBehaviour
     {
         // Ranger la sarbacane en la détruisant
 
-        if (Input.GetKey(KeyCode.Y))
+        if (Input.GetKeyUp(KeyCode.I))
         {
             Destroy(gameObject, 1);
         }
 
 
         // Préparer la boulette de papier pendant une durée 
-        if (Input.GetKeyUp(KeyCode.B) && bouletteUp == false)
+        if (bouletteUp == false)
         {
             StartCoroutine(preparerBoulette());
         }
 
         IEnumerator preparerBoulette()
         {
-            audioSource.PlayOneShot(paperSounds,1);
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(1.0f);
             Debug.Log("Boulette prête");
             bouletteUp = true;
             yield return new WaitForSeconds(1.0f);
 
         }
 
-            // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
+        // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
 
-            if (Input.GetKey(KeyCode.Space) && bouletteUp==true)
+        if (Input.GetKey(KeyCode.Space) && bouletteUp == true)
         {
-                force = force + forcePlus;
+            force = force + forcePlus;
         }
 
-        if(force >= forceMax)
+        if (force >= forceMax)
         {
             force = forceMax;
         }
@@ -64,7 +63,7 @@ public class Sarbacane : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space) && bouletteUp == true)
         {
-            audioSource.PlayOneShot(shootSounds,1);
+            audioSource.PlayOneShot(shootSounds, 1);
             Rigidbody instance;
             instance = Instantiate(Boulette, origine.position, origine.rotation) as Rigidbody;
             instance.AddForce(transform.up * force);

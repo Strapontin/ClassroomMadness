@@ -19,6 +19,7 @@ public class InstancierEleves : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(PlayerPrefs.GetInt("RuleHastouchplayer") + "playerpref");
         if (PlayerPrefs.GetInt("RuleHastouchplayer") == 1)
         {
             spawnStudent();

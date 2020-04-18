@@ -29,7 +29,6 @@ public class RegleScript : MonoBehaviour
         {
             rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-
             PlayerPrefs.SetInt("RuleHastouchplayer", 1);
             Destroy(gameObject);
         }
@@ -42,8 +41,7 @@ public class RegleScript : MonoBehaviour
         {
             rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-
-            PlayerPrefs.SetInt("RuleHastouchplayer", 0);
+            PlayerPrefs.SetInt("RuleHastouchplayer", 1);
             Destroy(gameObject);
         }
     }
