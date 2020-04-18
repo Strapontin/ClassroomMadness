@@ -49,7 +49,7 @@ public class Sarbacane : MonoBehaviour
 
             // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
 
-            if (Input.GetKey(KeyCode.Space) && bouletteUp==true)
+            if (Input.GetMouseButton(0) && bouletteUp==true)
         {
                 force = force + forcePlus;
         }
@@ -61,7 +61,7 @@ public class Sarbacane : MonoBehaviour
 
         // Tire la boulette de papier lorsqu'on relache le bouton de tir
 
-        if (Input.GetKeyUp(KeyCode.Space) && bouletteUp == true)
+        if (Input.GetMouseButtonUp(0) && bouletteUp == true)
         {
             audioSource.PlayOneShot(shootSounds,1);
             Rigidbody instance;

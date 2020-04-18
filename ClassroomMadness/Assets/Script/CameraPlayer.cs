@@ -38,11 +38,11 @@ public class CameraPlayer : MonoBehaviour
 
         // Bug quand on veut récuperer la valeur de la variable du joueur éléve quand il est assis ou pas:  GetComponent<JoueurEleve>().canHeMove = sit;
 
-       if (sit == true && Input.GetKeyDown(KeyCode.M))
+       if (sit == true && Input.GetKeyDown(KeyCode.Space))
         {
             sit = false;
         }
-       else if (sit == false && Input.GetKeyDown(KeyCode.M))
+       else if (sit == false && Input.GetKeyDown(KeyCode.Space))
         {
             sit = true;
         }

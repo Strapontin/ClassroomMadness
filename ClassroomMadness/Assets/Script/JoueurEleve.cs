@@ -155,7 +155,7 @@ public class JoueurEleve : MonoBehaviour
         }
 
 
-        if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space))
         {
             canHeMove = true;
             Cc.enabled = true;
@@ -164,7 +164,7 @@ public class JoueurEleve : MonoBehaviour
 
 
         }
-        else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space))
         {
             canHeMove = false;
 
