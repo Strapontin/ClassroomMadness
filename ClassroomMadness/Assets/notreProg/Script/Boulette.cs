@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boulette : MonoBehaviour
 {
-    public int pvBoulette;
+    public int pvBoulette = 1;
     private Rigidbody rb;
     bool glue = false;
     Vector3 Pos;
@@ -59,9 +59,5 @@ public class Boulette : MonoBehaviour
         Pos = transform.position;
         audioSource.PlayOneShot(paperGlueSounds, 1);
         glue = true;
-
-
-
-
     }
 }

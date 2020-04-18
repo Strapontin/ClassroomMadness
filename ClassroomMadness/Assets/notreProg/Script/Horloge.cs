@@ -27,7 +27,7 @@ public class Horloge : MonoBehaviour
         {
             // refresh la scene quand le temps est écoulé (test)
             Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("Killian");
             Debug.Log("Fin du jeu");
         }
     }
