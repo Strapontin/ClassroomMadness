@@ -59,18 +59,3 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-# On ne prends pas le dossier de SteamVR car sans toucher au fichier, des conflits peuvent s'opérer
-SteamVR/
-SteamVR_Input/
-SteamVR_Resources/
-StreamingAssets/
-Assets/SteamVR/
-Assets/SteamVR_Input/
-Assets/SteamVR_Resources/
-Assets/StreamingAssets/
-/Assets/SteamVR/
-/Assets/SteamVR_Input/
-/Assets/SteamVR_Resources/
-/Assets/StreamingAssets/
-
-StreamingAssets.meta
