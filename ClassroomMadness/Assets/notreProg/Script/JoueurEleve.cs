@@ -91,6 +91,7 @@ public class JoueurEleve : MonoBehaviour
             Cc.Move(moveDir * Time.deltaTime);
 
             Cc.Move(moveDirHori * Time.deltaTime);
+          //  gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
 
 
         }

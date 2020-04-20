@@ -27,3 +27,5 @@ public class Marker : DraggableObject
         painter.ChangeColour(color);
     }
 }
+
+

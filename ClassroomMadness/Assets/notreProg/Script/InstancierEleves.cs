@@ -49,7 +49,7 @@ public class InstancierEleves : MonoBehaviour
         for (int i = 0; i < rb.Count; i++)
         {
             Rigidbody instance;
-            place[i].position = chaise[i].position + new Vector3(0f, -0.45f, -0.1f);
+            place[i].position = chaise[i].position + new Vector3(0f, -0.6f, 0.5f);
             place[i].rotation = chaise[i].rotation;
             instance = Instantiate(rb[i], place[i].position, place[i].rotation) as Rigidbody;
         }

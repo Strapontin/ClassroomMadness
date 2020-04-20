@@ -11,6 +11,7 @@ TagManager:
   - objetAttrapable
   - eraser
   - Stud
+  - Brosse
   layers:
   - Default
   - TransparentFX
