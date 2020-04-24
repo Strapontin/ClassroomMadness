@@ -36,11 +36,11 @@ public class CanvasEleveManager : MonoBehaviour
         {
             ForceSarbacane2.SetActive(true);
         }
-        else if (force == forceMax / 2)
+        else if (force > forceMax / 2 && force < forceMax - forceMax/4)
         {
             ForceSarbacane3.SetActive(true);
         }
-        else if (force < forceMax - (forceMax / 3))
+        else if (force > forceMax - forceMax / 4 && force < forceMax)
         {
             ForceSarbacane4.SetActive(true);
         }

@@ -12,6 +12,7 @@ TagManager:
   - eraser
   - Stud
   - Brosse
+  - Regle
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Sarbacane : MonoBehaviour
 {
+
+    CanvasEleveManager canvasEleveManager;
+
     public Rigidbody Boulette;
     public Transform origine;
     public int force;
@@ -18,12 +21,16 @@ public class Sarbacane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasEleveManager = GameObject.Find("EleveCanvas").GetComponent<CanvasEleveManager>();
+
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         // Ranger la sarbacane en la détruisant
 
         if (Input.GetKeyUp(KeyCode.I))
@@ -49,7 +56,7 @@ public class Sarbacane : MonoBehaviour
 
         // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
 
-        if (Input.GetKey(KeyCode.Space) && bouletteUp == true)
+        if (Input.GetMouseButton(0) && bouletteUp == true)
         {
             force = force + forcePlus;
         }
@@ -61,15 +68,17 @@ public class Sarbacane : MonoBehaviour
 
         // Tire la boulette de papier lorsqu'on relache le bouton de tir
 
-        if (Input.GetKeyUp(KeyCode.Space) && bouletteUp == true)
+        if (Input.GetMouseButtonUp(0) && bouletteUp == true)
         {
             audioSource.PlayOneShot(shootSounds, 1);
             Rigidbody instance;
             instance = Instantiate(Boulette, origine.position, origine.rotation) as Rigidbody;
             instance.AddForce(transform.up * force);
-            force = 1;
+            force = 0;
             bouletteUp = false;
         }
 
+
+        canvasEleveManager.SerbacaneForce(force, forceMax);
     }
 }

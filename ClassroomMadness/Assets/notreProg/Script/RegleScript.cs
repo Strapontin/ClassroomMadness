@@ -23,26 +23,26 @@ public class RegleScript : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
-        {
-            rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-            leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-            PlayerPrefs.SetInt("RuleHastouchplayer", 1);
-            Destroy(gameObject);
-        }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+    //    {
+    //        rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+    //        leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+    //        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+    //        Destroy(gameObject);
+    //    }
 
-    }
+    //}
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
-        {
-            rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-            leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-            PlayerPrefs.SetInt("RuleHastouchplayer", 1);
-            Destroy(gameObject);
-        }
-    }
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+    //    {
+    //        rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+    //        leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+    //        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

@@ -14,9 +14,11 @@ public class JoueurEleve : MonoBehaviour
     public Transform Camera;
     public Transform emp_Camera_Debout;
     public Transform emp_Camera_Assis;
+    public Transform emp_etoiles;
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
+    public Rigidbody etoiles;
     public Transform origine;
     public float gravity = 10f;
     public float speed = 10f;
@@ -55,6 +57,7 @@ public class JoueurEleve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         distanceMove = Vector3.Distance(moveDir, new Vector3(0, 0, 0));
 
         // Position de la caméra lorsqu'il est assis ou debout, la tête lors de l'animation assis et debout ne se trouve pas au même endroit 
@@ -156,7 +159,7 @@ public class JoueurEleve : MonoBehaviour
         }
 
 
-        if (canHeMove == false && Input.GetKeyDown(KeyCode.M))
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space))
         {
             canHeMove = true;
             Cc.enabled = true;
@@ -165,7 +168,7 @@ public class JoueurEleve : MonoBehaviour
 
 
         }
-        else if (canHeMove == true && Input.GetKeyDown(KeyCode.M))
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space))
         {
             canHeMove = false;
 
@@ -202,10 +205,32 @@ public class JoueurEleve : MonoBehaviour
         Debug.Log("marche");
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
+        {
+            animator.SetBool("stun", true);
+            Rigidbody instance;
+            instance = Instantiate(etoiles, emp_etoiles.position, emp_etoiles.rotation, Camera.transform.parent) as Rigidbody;
+            Debug.Log("etoile");
+        }
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
 
+        // Instancier les étoiles et l'animation stun
+
+        if (collision.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
+        {
+            Rigidbody instance;
+            instance = Instantiate(etoiles, emp_etoiles.position, emp_etoiles.rotation, Camera.transform.parent) as Rigidbody;
+            Debug.Log("etoile");
+        }
+
+
+        //-----------------------------------------------------------------//
 
         transform.Translate(0, 0, 0);
         if (collision.gameObject.CompareTag("Chaise"))
@@ -228,5 +253,6 @@ public class JoueurEleve : MonoBehaviour
             ChaiseNear = null;
         }
     }
+
 
 }
