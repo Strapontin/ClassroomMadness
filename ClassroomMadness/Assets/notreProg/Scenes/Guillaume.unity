@@ -2838,6 +2838,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6182413489323125429, guid: 0afc89e4e8ee18049949e7fa3b3d3ca7,
         type: 3}
+    - target: {fileID: 7272471673823106184, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
+        type: 3}
+      propertyPath: rb.Array.data[0]
+      value: 
+      objectReference: {fileID: 9005666213122969654, guid: c4606cbef130a1747b8b496413516bcc,
+        type: 3}
+    - target: {fileID: 7272471673823106184, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
+        type: 3}
+      propertyPath: rb.Array.data[1]
+      value: 
+      objectReference: {fileID: 9005666213122969654, guid: c4606cbef130a1747b8b496413516bcc,
+        type: 3}
+    - target: {fileID: 7272471673823106184, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
+        type: 3}
+      propertyPath: rb.Array.data[3]
+      value: 
+      objectReference: {fileID: 9005666213122969654, guid: c4606cbef130a1747b8b496413516bcc,
+        type: 3}
+    - target: {fileID: 7272471673823106184, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
+        type: 3}
+      propertyPath: rb.Array.data[4]
+      value: 
+      objectReference: {fileID: 9005666213122969654, guid: c4606cbef130a1747b8b496413516bcc,
+        type: 3}
+    - target: {fileID: 7272471673823106184, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
+        type: 3}
+      propertyPath: rb.Array.data[5]
+      value: 
+      objectReference: {fileID: 9005666213122969654, guid: c4606cbef130a1747b8b496413516bcc,
+        type: 3}
     - target: {fileID: 7272471673823106185, guid: 8b30ab6915dba5e4785ab8d70e8dcb09,
         type: 3}
       propertyPath: m_LocalPosition.x
