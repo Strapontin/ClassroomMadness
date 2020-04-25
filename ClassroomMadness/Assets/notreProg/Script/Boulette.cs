@@ -11,11 +11,15 @@ public class Boulette : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip cleanSounds;
     public AudioClip paperGlueSounds;
+
+
+    private GameObject countScore1;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        countScore1 = GameObject.Find("CountScoreSystemEleve");
     }
 
     // Update is called once per frame
@@ -23,12 +27,15 @@ public class Boulette : MonoBehaviour
     {
         if (glue)
         {
+            glue = false;
             transform.position = Pos;
+            countScore1.GetComponent<CountBoulette>().nbBoulette += 1;
         }
         //Destroy(gameObject, 4);
 
         if (pvBoulette <= 0)
         {
+            countScore1.GetComponent<CountBoulette>().nbBoulette -= 1;
             Destroy(rb.gameObject);
         }
 

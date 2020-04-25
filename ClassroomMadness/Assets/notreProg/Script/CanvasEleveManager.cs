@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasEleveManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class CanvasEleveManager : MonoBehaviour
     public GameObject ForceSarbacane3;
     public GameObject ForceSarbacane4;
     public GameObject ForceSarbacane5;
+
+    public GameObject scoreValue;
+    int scoreValuefloat;
+    public GameObject scorePrintable;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +23,8 @@ public class CanvasEleveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        scoreValuefloat = (int) scoreValue.GetComponent<CountBoulette>().Score ;
+        scorePrintable.GetComponent<Text>().text = scoreValuefloat + "";
     }
 
     public void SerbacaneForce(int force, int forceMax)

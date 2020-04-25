@@ -43,7 +43,9 @@ public class RegleScript : MonoBehaviour
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             if(collision.gameObject.CompareTag("Player"))
             {
-                PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+                StartCoroutine(destunWait());
+                destroyAllBullet();
+                GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
             }
             Destroy(gameObject);
         }
@@ -71,6 +73,8 @@ public class RegleScript : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 StartCoroutine(destunWait());
+                destroyAllBullet();
+                GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
             }
             Destroy(gameObject);
         }
@@ -84,4 +88,12 @@ public class RegleScript : MonoBehaviour
         PlayerPrefs.SetInt("RuleHastouchplayer", 1);
     }
 
+
+    void destroyAllBullet()
+    {
+        while(GameObject.Find("boulette_papier(Clone)") != null)
+        {
+            Destroy(GameObject.Find("boulette_papier(Clone)"));
+        }
+    }
 }
