@@ -29,14 +29,15 @@ public class Horloge : MonoBehaviour
             // refresh la scene quand le temps est écoulé (test)
 
             gameObject.GetComponent<AudioSource>().Play();
-            SceneManager.LoadScene("Killian");
-//            StartCoroutine(finishGame());
+            //SceneManager.LoadScene("Killian");
+            StartCoroutine(finishGame());
 
         }
 
         IEnumerator finishGame()
         {
-            featuring.SetActive(true);
+            //featuring.SetActive(true);
+            
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Killian");
         }

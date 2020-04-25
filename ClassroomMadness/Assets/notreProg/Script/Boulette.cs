@@ -13,6 +13,8 @@ public class Boulette : MonoBehaviour
     public AudioClip paperGlueSounds;
 
 
+    float timer = 0.0f;
+
     private GameObject countScore1;
     // Start is called before the first frame update
     void Start()
@@ -25,17 +27,26 @@ public class Boulette : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // On compte les secondes
+        timer += Time.deltaTime;
+
+        if (timer % 60 >= 1)
+        {
+            timer = 0;
+            countScore1.GetComponent<CountBoulette>().BouletteScored();
+        }
+
         if (glue)
         {
             glue = false;
             transform.position = Pos;
-            countScore1.GetComponent<CountBoulette>().nbBoulette += 1;
+            //countScore1.GetComponent<CountBoulette>().nbBoulette += 1;
         }
         //Destroy(gameObject, 4);
 
         if (pvBoulette <= 0)
         {
-            countScore1.GetComponent<CountBoulette>().nbBoulette -= 1;
+            //countScore1.GetComponent<CountBoulette>().nbBoulette -= 1;
             Destroy(rb.gameObject);
         }
 

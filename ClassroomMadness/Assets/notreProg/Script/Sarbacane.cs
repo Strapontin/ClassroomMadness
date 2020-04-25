@@ -13,6 +13,7 @@ public class Sarbacane : MonoBehaviour
     public int forceMax;
     public int forcePlus;
     private bool bouletteUp = false;
+    private bool coroutineStarted = false;
 
     private AudioSource audioSource;
     public AudioClip shootSounds;
@@ -29,33 +30,29 @@ public class Sarbacane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         // Ranger la sarbacane en la détruisant
-
         if (Input.GetKeyUp(KeyCode.E))
         {
-            Destroy(gameObject, 1);
+            Destroy(gameObject);
         }
 
 
         // Préparer la boulette de papier pendant une durée 
-        if (bouletteUp == false)
+        if (bouletteUp == false && !coroutineStarted)
         {
             StartCoroutine(preparerBoulette());
         }
 
         IEnumerator preparerBoulette()
         {
+            coroutineStarted = true;
             yield return new WaitForSeconds(1.0f);
             Debug.Log("Boulette prête");
             bouletteUp = true;
-            yield return new WaitForSeconds(1.0f);
-
+            coroutineStarted = false;
         }
 
         // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
-
         if (Input.GetMouseButton(0) && bouletteUp == true)
         {
             force = force + forcePlus;
@@ -67,7 +64,6 @@ public class Sarbacane : MonoBehaviour
         }
 
         // Tire la boulette de papier lorsqu'on relache le bouton de tir
-
         if (Input.GetMouseButtonUp(0) && bouletteUp == true)
         {
             audioSource.PlayOneShot(shootSounds, 1);
@@ -77,8 +73,5 @@ public class Sarbacane : MonoBehaviour
             force = 0;
             bouletteUp = false;
         }
-
-
-        canvasEleveManager.SerbacaneForce(force, forceMax);
     }
 }

@@ -27,32 +27,32 @@ public class CanvasEleveManager : MonoBehaviour
         scorePrintable.GetComponent<Text>().text = scoreValuefloat + "";
     }
 
-    public void SerbacaneForce(int force, int forceMax)
-    {
-        ForceSarbacane1.SetActive(false);
-        ForceSarbacane2.SetActive(false);
-        ForceSarbacane3.SetActive(false);
-        ForceSarbacane4.SetActive(false);
-        ForceSarbacane5.SetActive(false);
-        if (force == 0)
-        {
-            ForceSarbacane1.SetActive(true);
-        }
-        else if (force > 0 && force <= forceMax / 2)
-        {
-            ForceSarbacane2.SetActive(true);
-        }
-        else if (force > forceMax / 2 && force < forceMax - forceMax/4)
-        {
-            ForceSarbacane3.SetActive(true);
-        }
-        else if (force > forceMax - forceMax / 4 && force < forceMax)
-        {
-            ForceSarbacane4.SetActive(true);
-        }
-        else if (force == forceMax)
-        {
-            ForceSarbacane5.SetActive(true);
-        }
-    }
+    //public void SerbacaneForce(int force, int forceMax)
+    //{
+    //    ForceSarbacane1.SetActive(false);
+    //    ForceSarbacane2.SetActive(false);
+    //    ForceSarbacane3.SetActive(false);
+    //    ForceSarbacane4.SetActive(false);
+    //    ForceSarbacane5.SetActive(false);
+    //    if (force == 0)
+    //    {
+    //        ForceSarbacane1.SetActive(true);
+    //    }
+    //    else if (force > 0 && force <= forceMax / 2)
+    //    {
+    //        ForceSarbacane2.SetActive(true);
+    //    }
+    //    else if (force > forceMax / 2 && force < forceMax - forceMax/4)
+    //    {
+    //        ForceSarbacane3.SetActive(true);
+    //    }
+    //    else if (force > forceMax - forceMax / 4 && force < forceMax)
+    //    {
+    //        ForceSarbacane4.SetActive(true);
+    //    }
+    //    else if (force == forceMax)
+    //    {
+    //        ForceSarbacane5.SetActive(true);
+    //    }
+    //}
 }

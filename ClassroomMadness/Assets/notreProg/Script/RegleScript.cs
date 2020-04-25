@@ -11,12 +11,15 @@ public class RegleScript : MonoBehaviour
     bool isGrounded = false;
 
     bool hasdmgPlayer = false;
+
+    private GameObject countScore1;
     // Start is called before the first frame update
     void Start()
     {
         rightHand = GameObject.Find("LeftHand");
         leftHand = GameObject.Find("RightHand");
         PlayerPrefs.SetInt("RuleHastouchplayer", 0);
+        countScore1 = GameObject.Find("CountScoreSystemEleve");
     }
 
     // Update is called once per frame
@@ -102,6 +105,7 @@ public class RegleScript : MonoBehaviour
         f = GameObject.FindGameObjectsWithTag("boulette");
         foreach (GameObject food in f)
         {
+            countScore1.GetComponent<CountBoulette>().nbBoulette = 0;
             Destroy(food);
         }
     }

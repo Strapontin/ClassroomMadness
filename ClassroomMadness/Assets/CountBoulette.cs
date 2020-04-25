@@ -19,10 +19,12 @@ public class CountBoulette : MonoBehaviour
     void Update()
     {
         //Ajout de 0.1 point si la boulette existe
-        Score += 0.1f * nbBoulette * Time.deltaTime;
-        if (Score % 1 == 0)
-        {
-            Debug.Log(Score);
-        }
+        //Score += 0.1f * nbBoulette * Time.deltaTime;
+    }
+
+
+    public void BouletteScored()
+    {
+        Score += 1;
     }
 }
