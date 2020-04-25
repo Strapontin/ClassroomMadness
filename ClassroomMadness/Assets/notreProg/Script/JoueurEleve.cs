@@ -14,11 +14,11 @@ public class JoueurEleve : MonoBehaviour
     public Transform Camera;
     public Transform emp_Camera_Debout;
     public Transform emp_Camera_Assis;
-    public Transform emp_etoiles;
+
 
     public GameObject Joueur;
     public Rigidbody Sarbacane;
-    public Rigidbody etoiles;
+
     public Transform origine;
     public float gravity = 10f;
     public float speed = 10f;
@@ -41,6 +41,7 @@ public class JoueurEleve : MonoBehaviour
 
     private float timerace = 20;
 
+    public GameObject starSytem;
     void Start()
     {
         Cc = GetComponent<CharacterController>();
@@ -77,7 +78,7 @@ public class JoueurEleve : MonoBehaviour
 
         if (canHeMove)
         {
-            timerace -= 1 * Time.deltaTime; // retire du temps
+           // timerace -= 1 * Time.deltaTime; // retire du temps
             // Déplacement du personnage
             if (Cc.isGrounded && timerace > 0)
             {
@@ -228,9 +229,7 @@ public class JoueurEleve : MonoBehaviour
         if (other.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
         {
             animator.SetBool("stun", true);
-            Rigidbody instance;
-            instance = Instantiate(etoiles, emp_etoiles.position, emp_etoiles.rotation, Camera.transform.parent) as Rigidbody;
-            Debug.Log("etoile");
+            starSytem.SetActive(true);
         }
     }
 
@@ -248,9 +247,7 @@ public class JoueurEleve : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
         {
-            Rigidbody instance;
-            instance = Instantiate(etoiles, emp_etoiles.position, emp_etoiles.rotation, Camera.transform.parent) as Rigidbody;
-            Debug.Log("etoile");
+
         }
 
 

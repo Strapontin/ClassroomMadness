@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 82249097694629220}
   m_Layer: 0
   m_Name: boulette_papier
-  m_TagString: Untagged
+  m_TagString: boulette
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,6 +58,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -69,6 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -93,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039b7f55d5a743e43befbaef521ddb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvBoulette: 100
+  pvBoulette: 2
   cleanSounds: {fileID: 8300000, guid: 4716cb708bac57c47b5b5fadb743cb40, type: 3}
   paperGlueSounds: {fileID: 8300000, guid: 38ffd3c7a515edb4ebe7c49578c003ae, type: 3}
 --- !u!54 &54120063977766892

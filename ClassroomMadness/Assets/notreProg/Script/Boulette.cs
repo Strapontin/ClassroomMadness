@@ -55,16 +55,34 @@ public class Boulette : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Brosse"))
+        {
+
+            pvBoulette -= 1;
+            if (audioSource.isPlaying != true)
+            {
+                audioSource.PlayOneShot(cleanSounds, 1);
+            }
+
+        }
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
 
         //this.transform.parent = collision.gameObject.transform;
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezePosition;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        Pos = transform.position;
-        audioSource.PlayOneShot(paperGlueSounds, 1);
-        glue = true;
+        if(collision.gameObject.name != "boulette_papier(Clone)")
+        {
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            Pos = transform.position;
+            audioSource.PlayOneShot(paperGlueSounds, 1);
+            glue = true;
+        }
+
     }
 }

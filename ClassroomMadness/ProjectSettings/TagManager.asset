@@ -15,6 +15,7 @@ TagManager:
   - Regle
   - Ground
   - NPC
+  - boulette
   layers:
   - Default
   - TransparentFX

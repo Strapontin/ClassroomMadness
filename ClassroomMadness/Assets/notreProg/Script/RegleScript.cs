@@ -10,6 +10,7 @@ public class RegleScript : MonoBehaviour
     public float timeAlivebeforeRespaw = 2;
     bool isGrounded = false;
 
+    bool hasdmgPlayer = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,8 +45,13 @@ public class RegleScript : MonoBehaviour
             if(collision.gameObject.CompareTag("Player"))
             {
                 StartCoroutine(destunWait());
-                destroyAllBullet();
+                hasdmgPlayer = true;
                 GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
+            }
+            if(hasdmgPlayer == true)
+            {
+                hasdmgPlayer = false;
+                destroyAllBullet();
             }
             Destroy(gameObject);
         }
@@ -75,6 +81,7 @@ public class RegleScript : MonoBehaviour
                 StartCoroutine(destunWait());
                 destroyAllBullet();
                 GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
+                print("collison eleve joeur");
             }
             Destroy(gameObject);
         }
@@ -91,9 +98,11 @@ public class RegleScript : MonoBehaviour
 
     void destroyAllBullet()
     {
-        while(GameObject.Find("boulette_papier(Clone)") != null)
+        GameObject[] f;
+        f = GameObject.FindGameObjectsWithTag("boulette");
+        foreach (GameObject food in f)
         {
-            Destroy(GameObject.Find("boulette_papier(Clone)"));
+            Destroy(food);
         }
     }
 }
