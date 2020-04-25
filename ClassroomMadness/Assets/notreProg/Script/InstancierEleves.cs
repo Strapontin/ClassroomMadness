@@ -30,14 +30,21 @@ public class InstancierEleves : MonoBehaviour
 }
     public void spawnStudent()
     {
-          while(GameObject.Find("EleveNPC(Clone)") != null)
-          {
-               Destroy(GameObject.Find("EleveNPC(Clone)"));
-          }
-         while(GameObject.Find("eleve fi Variant(Clone)") != null)
+        GameObject[] eleves;
+
+        eleves = GameObject.FindGameObjectsWithTag("NPC");
+
+        foreach (GameObject eleve in eleves)
         {
-            Destroy(GameObject.Find("eleve fi Variant(Clone)"));
+            Destroy(eleve);
         }
+
+
+
+          if(GameObject.Find("eleve fi Variant(Clone)") != null)
+          {
+               Destroy(GameObject.Find("eleve fi Variant(Clone)"));
+          }
         // On mélange la liste pour une disposition aléatoire des élèves
 
         for (int i = 0; i < rb.Count; i++)

@@ -2569,7 +2569,7 @@ GameObject:
   - component: {fileID: 2969796182440419098}
   m_Layer: 0
   m_Name: eleve
-  m_TagString: Stud
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
