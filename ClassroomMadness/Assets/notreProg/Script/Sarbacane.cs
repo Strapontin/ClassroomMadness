@@ -33,7 +33,7 @@ public class Sarbacane : MonoBehaviour
 
         // Ranger la sarbacane en la détruisant
 
-        if (Input.GetKeyUp(KeyCode.I))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             Destroy(gameObject, 1);
         }

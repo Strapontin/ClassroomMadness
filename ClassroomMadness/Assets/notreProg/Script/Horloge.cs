@@ -7,8 +7,9 @@ public class Horloge : MonoBehaviour
 {
 
     private float i = 180.0f;
+    public GameObject featuring;
     // vitesse de l'aiguille pour i+ = 0.1f => 60 secondes donc pour 2 min on prends i+= 0.05f
-    private float speed = 0.05f;
+    public float speed = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,17 @@ public class Horloge : MonoBehaviour
         if (GameObject.Find("Aiguille").transform.rotation == Quaternion.Euler(0, 0, 180f))
         {
             // refresh la scene quand le temps est écoulé (test)
-            Scene scene = SceneManager.GetActiveScene();
+
+            gameObject.GetComponent<AudioSource>().Play();
+            StartCoroutine(finishGame());
+
+        }
+
+        IEnumerator finishGame()
+        {
+            featuring.SetActive(true);
+            yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Killian");
-            Debug.Log("Fin du jeu");
         }
     }
 

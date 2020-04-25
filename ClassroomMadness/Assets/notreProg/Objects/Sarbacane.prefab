@@ -113,7 +113,7 @@ MonoBehaviour:
   Boulette: {fileID: 54120063977766892, guid: b255382a7f42a69468f3d9eae9f67977, type: 3}
   origine: {fileID: 4239931567210840468}
   force: 0
-  forceMax: 2000
+  forceMax: 1000
   forcePlus: 5
   shootSounds: {fileID: 8300000, guid: 02cb2a8bcc87ffd48b50610239d2d278, type: 3}
   paperSounds: {fileID: 8300000, guid: e650f07e75dd00b439f97b425ab95e7d, type: 3}

@@ -39,6 +39,8 @@ public class JoueurEleve : MonoBehaviour
     public AudioClip chairSounds;
 
 
+    private float timerace = 20;
+
     void Start()
     {
         Cc = GetComponent<CharacterController>();
@@ -75,8 +77,9 @@ public class JoueurEleve : MonoBehaviour
 
         if (canHeMove)
         {
+            timerace -= 1 * Time.deltaTime; // retire du temps
             // Déplacement du personnage
-            if (Cc.isGrounded)
+            if (Cc.isGrounded && timerace > 0)
             {
                 moveDir = new Vector3(0, 0, Input.GetAxis("Vertical"));
                 moveDir = transform.TransformDirection(moveDir);
@@ -85,6 +88,11 @@ public class JoueurEleve : MonoBehaviour
                 moveDirHori = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
                 moveDirHori = transform.TransformDirection(moveDirHori);
                 moveDirHori *= speed;
+            }
+            if(timerace <= 0)
+            {
+                StartCoroutine(victoirCourse());
+
             }
             moveDir.y -= gravity * Time.deltaTime;
             moveDirHori.y -= gravity * Time.deltaTime;
@@ -96,6 +104,15 @@ public class JoueurEleve : MonoBehaviour
             Cc.Move(moveDirHori * Time.deltaTime);
           //  gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
 
+
+        }
+
+        IEnumerator victoirCourse()
+        {
+            //animator.SetBool--------victoire de la course
+            yield return new WaitForSeconds(2);
+            GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
+            PlayerPrefs.SetInt("RuleHastouchplayer", 1);//permet de réinstancier tout les élèves après 2 seconde;
 
         }
 
@@ -159,16 +176,16 @@ public class JoueurEleve : MonoBehaviour
         }
 
 
-        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space))
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space))//elève se lève
         {
             canHeMove = true;
             Cc.enabled = true;
             audioSource.PlayOneShot(chairSounds);
             animator.SetBool("Sit", false);
-
+            timerace = 20;
 
         }
-        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space))
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space))//élève s'assoie
         {
             canHeMove = false;
 
@@ -178,9 +195,10 @@ public class JoueurEleve : MonoBehaviour
         }
 
 
+
         // Apparition de la sarbacane
 
-        if (Input.GetKeyUp(KeyCode.I) && GameObject.Find("Sarbacane(Clone)") == null)
+        if (Input.GetKeyUp(KeyCode.E) && GameObject.Find("Sarbacane(Clone)") == null)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
@@ -214,6 +232,12 @@ public class JoueurEleve : MonoBehaviour
             instance = Instantiate(etoiles, emp_etoiles.position, emp_etoiles.rotation, Camera.transform.parent) as Rigidbody;
             Debug.Log("etoile");
         }
+    }
+
+    IEnumerator StunDuration()
+    {
+        yield return new WaitForSeconds(2);
+        animator.SetBool("stun", false);
     }
 
 

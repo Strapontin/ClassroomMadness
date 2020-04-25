@@ -7,7 +7,8 @@ public class RegleScript : MonoBehaviour
 {
     private GameObject rightHand;
     private GameObject leftHand;
-
+    public float timeAlivebeforeRespaw = 2;
+    bool isGrounded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,29 +21,67 @@ public class RegleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isGrounded == true)
+        {
+            timeAlivebeforeRespaw -= 2 * Time.deltaTime;
+        }
+        else
+        {
+            timeAlivebeforeRespaw = 2;
+        }
+        if(timeAlivebeforeRespaw <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+        {
+            rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            if(collision.gameObject.CompareTag("Player"))
+            {
+                PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+            }
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        } 
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+        {
+            rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                StartCoroutine(destunWait());
+            }
+            Destroy(gameObject);
+        }
+
 
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
-    //    {
-    //        rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-    //        leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-    //        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
-    //        Destroy(gameObject);
-    //    }
+    IEnumerator destunWait()
+    {
+        yield return new WaitForSeconds(2.5f);
+        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+    }
 
-    //}
-
-    //private void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
-    //    {
-    //        rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-    //        leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-    //        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
-    //        Destroy(gameObject);
-    //    }
-    //}
 }

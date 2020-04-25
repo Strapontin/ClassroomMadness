@@ -17,24 +17,27 @@ public class InstancierEleves : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() { 
+  //  {
+  //    if (PlayerPrefs.GetInt("RuleHastouchplayer") == 1)
+  //  {
+
+    ///          PlayerPrefs.SetInt("RuleHastouchplayer", 0);
+
+    //        spawnStudent();
+    //      }
+    //    }
+}
+    public void spawnStudent()
     {
-        print(PlayerPrefs.GetInt("RuleHastouchplayer") + "playerpref");
-        if (PlayerPrefs.GetInt("RuleHastouchplayer") == 1)
+          while(GameObject.Find("EleveNPC(Clone)") != null)
+          {
+               Destroy(GameObject.Find("EleveNPC(Clone)"));
+          }
+         while(GameObject.Find("eleve fi Variant(Clone)") != null)
         {
-
-            PlayerPrefs.SetInt("RuleHastouchplayer", 0);
-            while(GameObject.Find("EleveNPC(Clone)") != null)
-            {
-                Destroy(GameObject.Find("EleveNPC(Clone)"));
-            }
-            spawnStudent();
+            Destroy(GameObject.Find("eleve fi Variant(Clone)"));
         }
-    }
-
-    void spawnStudent()
-    {
-
         // On mélange la liste pour une disposition aléatoire des élèves
 
         for (int i = 0; i < rb.Count; i++)
