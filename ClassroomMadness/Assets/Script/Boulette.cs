@@ -9,13 +9,9 @@ public class Boulette : MonoBehaviour
     private Rigidbody rb;
     bool glue = false;
     Vector3 Pos;
-<<<<<<< HEAD
-    
-=======
     private AudioSource audioSource;
     public AudioClip cleanSounds;
     public AudioClip paperGlueSounds;
->>>>>>> Steven
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +33,7 @@ public class Boulette : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
     /*    private void OnCollisionStay(Collision collision)
-=======
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Brosse"))
->>>>>>> Steven
         {
             if (collision.gameObject.CompareTag("Brosse"))
             {
@@ -56,14 +46,11 @@ public class Boulette : MonoBehaviour
         if (collision.gameObject.CompareTag("Brosse"))
         {
             pvBoulette -= 1;
-<<<<<<< HEAD
-=======
             if (audioSource.isPlaying != true)
             {
                 audioSource.PlayOneShot(cleanSounds, 1);
             }
 
->>>>>>> Steven
         }
         Debug.Log(collision.gameObject.tag);
         Debug.Log(pvBoulette);
@@ -74,19 +61,10 @@ public class Boulette : MonoBehaviour
     {
         Debug.Log(collision.gameObject.tag);
 
-<<<<<<< HEAD
         if (collision.gameObject.tag != "Boulette" &&
             collision.gameObject.tag != "EleveJoueur" &&
             collision.gameObject.tag != "Eleve")
         {
-            //this.transform.parent = collision.gameObject.transform;
-            rb.useGravity = false;
-            rb.constraints = RigidbodyConstraints.FreezePosition;
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-            Pos = transform.position;
-            glue = true;
-        }
-=======
         //this.transform.parent = collision.gameObject.transform;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePosition;
@@ -94,10 +72,6 @@ public class Boulette : MonoBehaviour
         Pos = transform.position;
         audioSource.PlayOneShot(paperGlueSounds, 1);
         glue = true;
-
-
-
-
->>>>>>> Steven
+        }
     }
 }
