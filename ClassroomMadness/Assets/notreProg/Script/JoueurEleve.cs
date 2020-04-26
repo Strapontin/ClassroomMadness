@@ -237,6 +237,7 @@ public class JoueurEleve : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         animator.SetBool("stun", false);
+
     }
 
 

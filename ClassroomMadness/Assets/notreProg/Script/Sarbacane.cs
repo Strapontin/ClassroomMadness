@@ -19,12 +19,15 @@ public class Sarbacane : MonoBehaviour
     public AudioClip shootSounds;
     public AudioClip paperSounds;
 
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         canvasEleveManager = GameObject.Find("EleveCanvas").GetComponent<CanvasEleveManager>();
 
         audioSource = GetComponent<AudioSource>();
+        player = GameObject.Find("eleve fi Variant(Clone)");
+
     }
 
     // Update is called once per frame
@@ -53,7 +56,7 @@ public class Sarbacane : MonoBehaviour
         }
 
         // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
-        if (Input.GetMouseButton(0) && bouletteUp == true)
+        if (Input.GetMouseButton(0) && bouletteUp == true && player.GetComponent< Animator>().GetBool("stun") == false)
         {
             force = force + forcePlus;
         }
