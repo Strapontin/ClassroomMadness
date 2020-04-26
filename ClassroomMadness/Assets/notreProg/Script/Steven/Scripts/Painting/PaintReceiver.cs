@@ -91,8 +91,8 @@ public class PaintReceiver : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Pixel" + count/100);
-        Debug.Log(eraser);
+ //       Debug.Log("Pixel" + count/100);
+   //     Debug.Log(eraser);
     }
 
 

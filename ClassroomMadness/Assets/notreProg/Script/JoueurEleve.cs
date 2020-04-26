@@ -50,7 +50,7 @@ public class JoueurEleve : MonoBehaviour
         // rend.sharedMaterial = material[0];
         animator = GetComponent<Animator>();
         canHeMove = false;
-        Debug.Log(distanceMove);
+
 
         //Fetch the AudioSource from the GameObject
         audioSource = GetComponent<AudioSource>();

@@ -82,9 +82,8 @@ public class RegleScript : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 StartCoroutine(destunWait());
-                destroyAllBullet();
 
-                StartCoroutine(destunWait());
+
             }
             Destroy(gameObject);
         }
@@ -94,6 +93,7 @@ public class RegleScript : MonoBehaviour
 
     IEnumerator destunWait()
     {
+        destroyAllBullet();
         yield return new WaitForSeconds(2.5f);
         GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
     }

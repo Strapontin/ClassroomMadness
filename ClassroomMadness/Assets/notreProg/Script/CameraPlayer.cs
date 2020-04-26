@@ -5,7 +5,7 @@ public class CameraPlayer : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
 
-    public Transform playerBody;
+    public GameObject playerBody;
 
     private float xRotation = 0f;
     private float yRotation = 0f;
@@ -50,6 +50,37 @@ public class CameraPlayer : MonoBehaviour
         if (sit == false)
         {
 
+
+            // Variable pour le déplacement de l'axe Y
+            hor += speedH * Input.GetAxis("Mouse X");
+
+            // Variable pour le déplacement de l'axe X
+            ver -= speedV * Input.GetAxis("Mouse Y");
+
+            transform.eulerAngles = new Vector3(ver, hor, 0.0f);
+
+            // Délimiter la rotation de l'axe de Y
+            if (hor < ymin)
+            {
+                hor = ymin;
+            }
+            else if (hor > ymax)
+            {
+                hor = ymax;
+            }
+
+            // Délimiter la rotation de l'axe de X
+            if (ver < xmin)
+            {
+                ver = xmin;
+            }
+            else if (ver > xmax)
+            {
+                ver = xmax;
+            }
+
+            playerBody.transform.eulerAngles = new Vector3 (0, gameObject.transform.eulerAngles.y, 0);
+            /*
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -59,11 +90,21 @@ public class CameraPlayer : MonoBehaviour
 
 
 
+            print(mouseX + "yrotata");
+            if(mouseX > xmax)
+            {
+                mouseX = xmax;
+            }
+            else if (mouseX < xmin)
+            {
+                mouseX = xmin;
+            }
+            
             transform.localRotation = Quaternion.Euler(yRotation, mouseX, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);
+            playerBody.Rotate(Vector3.up * mouseX);*/
 
 
-            Debug.Log("transform local rotation" + transform.localRotation);
+           // Debug.Log("transform local rotation" + transform.localRotation);
 
 
         }
