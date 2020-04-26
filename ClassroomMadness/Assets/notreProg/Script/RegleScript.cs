@@ -83,8 +83,8 @@ public class RegleScript : MonoBehaviour
             {
                 StartCoroutine(destunWait());
                 destroyAllBullet();
-                GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
-                print("collison eleve joeur");
+
+                StartCoroutine(destunWait());
             }
             Destroy(gameObject);
         }
@@ -95,7 +95,7 @@ public class RegleScript : MonoBehaviour
     IEnumerator destunWait()
     {
         yield return new WaitForSeconds(2.5f);
-        PlayerPrefs.SetInt("RuleHastouchplayer", 1);
+        GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
     }
 
 

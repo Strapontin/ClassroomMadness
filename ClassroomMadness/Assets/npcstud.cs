@@ -6,6 +6,7 @@ public class npcstud : MonoBehaviour
 {
     Animator animator;
     public GameObject starSystem;
+    private float Stuntime;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,16 @@ public class npcstud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       if(Stuntime <= 0)
+       {
+            animator.SetBool("stun", false);
+            starSystem.SetActive(false);
+       }
+       else
+       {
+           Stuntime -= 1 * Time.deltaTime;
+       }
+         
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +34,7 @@ public class npcstud : MonoBehaviour
         {
             animator.SetBool("stun", true);
             starSystem.SetActive(true);
+            Stuntime = 3;
         }
     }
 }

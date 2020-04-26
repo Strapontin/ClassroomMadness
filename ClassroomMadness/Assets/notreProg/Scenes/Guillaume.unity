@@ -1093,6 +1093,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1774857624}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &126439226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126439227}
+  - component: {fileID: 126439228}
+  m_Layer: 0
+  m_Name: brosse collider (2)
+  m_TagString: Brosse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &126439227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126439226}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786918237}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &126439228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126439226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016390992, y: 0.008470154, z: 0.0103996275}
+  m_Center: {x: 0, y: -0.005302429, z: 0.00010795594}
 --- !u!4 &128179222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 429506, guid: dc06161b6d97feb419f45f03b62e14b9,
@@ -1451,6 +1495,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+--- !u!1 &349669816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349669817}
+  - component: {fileID: 349669818}
+  m_Layer: 0
+  m_Name: brosse collider (1)
+  m_TagString: Brosse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349669817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349669816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786918237}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &349669818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349669816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016390992, y: 0.008470154, z: 0.0103996275}
+  m_Center: {x: 0.01820755, y: -0.005302429, z: 0.00010795594}
 --- !u!1 &362150903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,37 +3178,37 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 75.44259
+      value: 79.092
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83.069
+      value: 81.43839
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 89.15447
+      value: 97.92367
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.13110042
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9913691
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
@@ -3130,7 +3218,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 15.066001
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fe88b1590494444af3bd111d7870bf,
         type: 3}
@@ -3169,25 +3257,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05fe88b1590494444af3bd111d7870bf, type: 3}
---- !u!1 &786918236 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4084433146958626970, guid: 05fe88b1590494444af3bd111d7870bf,
+--- !u!4 &786918237 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7060091984273018160, guid: 05fe88b1590494444af3bd111d7870bf,
     type: 3}
   m_PrefabInstance: {fileID: 786918235}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &786918237
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786918236}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06062431, y: 0.00806197, z: 0.01315479}
-  m_Center: {x: -0.00000047683716, y: -0.004117197, z: 0}
 --- !u!1 &804259121
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5158,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446418072}
   m_CullTransparentMesh: 0
+--- !u!1 &1502572074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502572075}
+  - component: {fileID: 1502572076}
+  m_Layer: 0
+  m_Name: brosse collider
+  m_TagString: Brosse
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1502572075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502572074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 786918237}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1502572076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502572074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016390992, y: 0.008470154, z: 0.0103996275}
+  m_Center: {x: -0.01820755, y: -0.005302429, z: 0.00010795594}
 --- !u!4 &1504251450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2946212468447715126, guid: ea3e0aeb5cdeece4eb086446d10135d1,
