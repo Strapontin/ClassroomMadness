@@ -24,6 +24,9 @@ public class CameraPlayer : MonoBehaviour
 
     private bool sit = true;
 
+    private float xmindebout = -80;
+    private float xmaxdebout = 80;
+
     // Use this for initialization
     void Start()
     {
@@ -33,10 +36,7 @@ public class CameraPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         // Bug quand on veut récuperer la valeur de la variable du joueur éléve quand il est assis ou pas:  GetComponent<JoueurEleve>().canHeMove = sit;
-
         if (sit == true && Input.GetKeyDown(KeyCode.Space))
         {
             sit = false;
@@ -46,11 +46,8 @@ public class CameraPlayer : MonoBehaviour
             sit = true;
         }
 
-
         if (sit == false)
         {
-
-
             // Variable pour le déplacement de l'axe Y
             hor += speedH * Input.GetAxis("Mouse X");
 
@@ -58,57 +55,19 @@ public class CameraPlayer : MonoBehaviour
             ver -= speedV * Input.GetAxis("Mouse Y");
 
             transform.eulerAngles = new Vector3(ver, hor, 0.0f);
-
-            // Délimiter la rotation de l'axe de Y
-            if (hor < ymin)
-            {
-                hor = ymin;
-            }
-            else if (hor > ymax)
-            {
-                hor = ymax;
-            }
-
+            
             // Délimiter la rotation de l'axe de X
-            if (ver < xmin)
+            if (ver < xmindebout)
             {
-                ver = xmin;
+                ver = xmindebout;
             }
-            else if (ver > xmax)
+            else if (ver > xmaxdebout)
             {
-                ver = xmax;
+                ver = xmaxdebout;
             }
 
             playerBody.transform.eulerAngles = new Vector3 (0, gameObject.transform.eulerAngles.y, 0);
-            /*
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-            xRotation -= mouseX;
-
-            yRotation -= mouseY;
-
-
-
-            print(mouseX + "yrotata");
-            if(mouseX > xmax)
-            {
-                mouseX = xmax;
-            }
-            else if (mouseX < xmin)
-            {
-                mouseX = xmin;
-            }
-            
-            transform.localRotation = Quaternion.Euler(yRotation, mouseX, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);*/
-
-
-           // Debug.Log("transform local rotation" + transform.localRotation);
-
-
         }
-
         // Caméra lorsque le joueur est assis
         else if (sit == true)
         {

@@ -7,7 +7,7 @@ public class InstancierEleves : MonoBehaviour
     public List<Rigidbody> rb = new List<Rigidbody>();
     public List<Transform> chaise = new List<Transform>();
     public Transform place;
-       
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +49,41 @@ public class InstancierEleves : MonoBehaviour
             place.position = chaise[i].position + new Vector3(0f, -0.6f, 0.5f);
             place.rotation = chaise[i].rotation;
             instance = Instantiate(rb[i], place.position, place.rotation) as Rigidbody;
+        }
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<JoueurEleve>().StopStun();
+    }
+
+    public void StudentGotStunned()
+    {
+        StartCoroutine(DestunWait());
+    }
+
+
+    IEnumerator DestunWait()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<JoueurEleve>().StartStun();
+
+        GameObject sarbacane = GameObject.Find("Sarbacane(Clone)");
+
+        if (sarbacane != null)
+        {
+            Destroy(sarbacane);
+        }
+        
+        DestroyAllBoullettes();
+        yield return new WaitForSeconds(3f);
+        spawnStudent();
+    }
+
+
+    void DestroyAllBoullettes()
+    {
+        var boulettes = GameObject.FindGameObjectsWithTag("boulette");
+
+        foreach (GameObject boulette in boulettes)
+        {
+            Destroy(boulette);
         }
     }
 }

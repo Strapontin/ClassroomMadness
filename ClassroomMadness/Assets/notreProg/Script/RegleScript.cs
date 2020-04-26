@@ -10,22 +10,23 @@ public class RegleScript : MonoBehaviour
     public float timeAlivebeforeRespaw = 2;
     bool isGrounded = false;
 
-    bool hasdmgPlayer = false;
+    private InstancierEleves InstancierEleves;
 
-    private GameObject countScore1;
+
     // Start is called before the first frame update
     void Start()
     {
         rightHand = GameObject.Find("LeftHand");
         leftHand = GameObject.Find("RightHand");
         PlayerPrefs.SetInt("RuleHastouchplayer", 0);
-        countScore1 = GameObject.Find("CountScoreSystemEleve");
+
+        InstancierEleves = GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isGrounded == true)
+        if (isGrounded == true)
         {
             timeAlivebeforeRespaw -= 2 * Time.deltaTime;
         }
@@ -33,7 +34,7 @@ public class RegleScript : MonoBehaviour
         {
             timeAlivebeforeRespaw = 2;
         }
-        if(timeAlivebeforeRespaw <= 0)
+        if (timeAlivebeforeRespaw <= 0)
         {
             Destroy(gameObject);
         }
@@ -41,21 +42,16 @@ public class RegleScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Stud"))
         {
             rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
-            if(collision.gameObject.CompareTag("Player"))
+
+            if (collision.gameObject.CompareTag("Player"))
             {
-                StartCoroutine(destunWait());
-                hasdmgPlayer = true;
-                GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
+                InstancierEleves.StudentGotStunned();
             }
-            if(hasdmgPlayer == true)
-            {
-                hasdmgPlayer = false;
-                destroyAllBullet();
-            }
+
             Destroy(gameObject);
         }
 
@@ -79,34 +75,12 @@ public class RegleScript : MonoBehaviour
         {
             rightHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
             leftHand.gameObject.GetComponent<Hand>().DetachObject(gameObject, false);
+
             if (collision.gameObject.CompareTag("Player"))
             {
-                StartCoroutine(destunWait());
-
-
+                InstancierEleves.StudentGotStunned();
             }
             Destroy(gameObject);
-        }
-
-
-    }
-
-    IEnumerator destunWait()
-    {
-        destroyAllBullet();
-        yield return new WaitForSeconds(2.5f);
-        GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
-    }
-
-
-    void destroyAllBullet()
-    {
-        GameObject[] f;
-        f = GameObject.FindGameObjectsWithTag("boulette");
-        foreach (GameObject food in f)
-        {
-            countScore1.GetComponent<CountBoulette>().nbBoulette = 0;
-            Destroy(food);
         }
     }
 }

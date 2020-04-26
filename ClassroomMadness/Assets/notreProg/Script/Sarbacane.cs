@@ -27,7 +27,6 @@ public class Sarbacane : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         player = GameObject.Find("eleve fi Variant(Clone)");
-
     }
 
     // Update is called once per frame
@@ -56,7 +55,7 @@ public class Sarbacane : MonoBehaviour
         }
 
         // Augmente la force du tir selon qu'on appuie longtemps sur la touche, on définit une force maximum
-        if (Input.GetMouseButton(0) && bouletteUp == true && player.GetComponent< Animator>().GetBool("stun") == false)
+        if (Input.GetMouseButton(0) && bouletteUp == true)
         {
             force = force + forcePlus;
         }

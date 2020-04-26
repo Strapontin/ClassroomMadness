@@ -15,13 +15,14 @@ public class Boulette : MonoBehaviour
 
     float timer = 0.0f;
 
-    private GameObject countScore1;
+    private GameObject countScore;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
-        countScore1 = GameObject.Find("CountScoreSystemEleve");
+        countScore = GameObject.Find("CountScoreSystemEleve");
     }
 
     // Update is called once per frame
@@ -33,36 +34,31 @@ public class Boulette : MonoBehaviour
         if (timer % 60 >= 1)
         {
             timer = 0;
-            countScore1.GetComponent<CountBoulette>().BouletteScored();
+            countScore.GetComponent<CountBoulette>().BouletteScored();
         }
 
         if (glue)
         {
             glue = false;
             transform.position = Pos;
-            //countScore1.GetComponent<CountBoulette>().nbBoulette += 1;
         }
-        //Destroy(gameObject, 4);
 
         if (pvBoulette <= 0)
         {
-            //countScore1.GetComponent<CountBoulette>().nbBoulette -= 1;
             Destroy(rb.gameObject);
         }
-
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Brosse"))
         {
-
             pvBoulette -= 1;
+
             if (audioSource.isPlaying != true)
             {
                 audioSource.PlayOneShot(cleanSounds, 1);
             }
-
         }
     }
 
@@ -70,22 +66,21 @@ public class Boulette : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Brosse"))
         {
-
             pvBoulette -= 1;
+
             if (audioSource.isPlaying != true)
             {
                 audioSource.PlayOneShot(cleanSounds, 1);
             }
-
         }
     }
 
 
     void OnCollisionEnter(Collision collision)
     {
-
-        //this.transform.parent = collision.gameObject.transform;
-        if(collision.gameObject.name != "boulette_papier(Clone)")
+        if (collision.gameObject.name != "boulette_papier(Clone)" &&
+            collision.gameObject.name != "Sarbacane(Clone)" &&
+            collision.gameObject.name != "eleve fi Variant(Clone)")
         {
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezePosition;
@@ -94,6 +89,5 @@ public class Boulette : MonoBehaviour
             audioSource.PlayOneShot(paperGlueSounds, 1);
             glue = true;
         }
-
     }
 }

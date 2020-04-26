@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 
 public class JoueurEleve : MonoBehaviour
-
 {
     public float horizontalSpeed = 4.0F;
     public float verticalSpeed = 4.0F;
@@ -38,19 +37,19 @@ public class JoueurEleve : MonoBehaviour
     public AudioClip[] walkSounds;
     public AudioClip chairSounds;
 
+    private bool isStun = false;
 
     private float timerace = 20;
 
     public GameObject starSytem;
+
     void Start()
     {
         Cc = GetComponent<CharacterController>();
         rend = GetComponent<Renderer>();
         rend.enabled = true;
-        // rend.sharedMaterial = material[0];
         animator = GetComponent<Animator>();
         canHeMove = false;
-
 
         //Fetch the AudioSource from the GameObject
         audioSource = GetComponent<AudioSource>();
@@ -60,7 +59,6 @@ public class JoueurEleve : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         distanceMove = Vector3.Distance(moveDir, new Vector3(0, 0, 0));
 
         // Position de la caméra lorsqu'il est assis ou debout, la tête lors de l'animation assis et debout ne se trouve pas au même endroit 
@@ -75,10 +73,8 @@ public class JoueurEleve : MonoBehaviour
             Cc.enabled = false;
         }
 
-
-        if (canHeMove)
+        if (canHeMove && !isStun)
         {
-           // timerace -= 1 * Time.deltaTime; // retire du temps
             // Déplacement du personnage
             if (Cc.isGrounded && timerace > 0)
             {
@@ -90,42 +86,23 @@ public class JoueurEleve : MonoBehaviour
                 moveDirHori = transform.TransformDirection(moveDirHori);
                 moveDirHori *= speed;
             }
-            if(timerace <= 0)
-            {
-                StartCoroutine(victoirCourse());
 
-            }
             moveDir.y -= gravity * Time.deltaTime;
             moveDirHori.y -= gravity * Time.deltaTime;
-            //transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * speed * 2 * 10);
-
 
             Cc.Move(moveDir * Time.deltaTime);
-
             Cc.Move(moveDirHori * Time.deltaTime);
-          //  gameObject.GetComponent<CapsuleCollider>().isTrigger = false;
-
-
-        }
-
-        IEnumerator victoirCourse()
-        {
-            //animator.SetBool--------victoire de la course
-            yield return new WaitForSeconds(2);
-            GameObject.Find("InstancierEleves").GetComponent<InstancierEleves>().spawnStudent();
-            PlayerPrefs.SetInt("RuleHastouchplayer", 1);//permet de réinstancier tout les élèves après 2 seconde;
-
         }
 
         if (distanceMove > 2f && Input.GetAxis("Vertical") < 0)
         {
             animator.SetBool("Walk Back", true);
             speed = 5f;
+
             if (audioSource.isPlaying != true)
             {
                 PlayFootStepAudio();
             }
-
         }
         else if (distanceMove > 2f && Input.GetAxis("Vertical") > 0)
         {
@@ -137,9 +114,7 @@ public class JoueurEleve : MonoBehaviour
             {
                 PlayFootStepAudio();
             }
-
         }
-
         else
         {
             animator.SetBool("Run", false);
@@ -155,19 +130,16 @@ public class JoueurEleve : MonoBehaviour
             {
                 PlayFootStepAudio();
             }
-
         }
         else if (Input.GetAxis("Horizontal") > 0 && canHeMove == true)
         {
             animator.SetBool("Right", true);
             speed = 5f;
 
-            //PlayFootStepAudio();
             if (audioSource.isPlaying != true)
             {
                 PlayFootStepAudio();
             }
-
         }
         else
         {
@@ -176,42 +148,29 @@ public class JoueurEleve : MonoBehaviour
             speed = 10f;
         }
 
-
-        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space))//elève se lève
+        if (canHeMove == false && Input.GetKeyDown(KeyCode.Space) && !isStun)//elève se lève
         {
             canHeMove = true;
             Cc.enabled = true;
             audioSource.PlayOneShot(chairSounds);
             animator.SetBool("Sit", false);
             timerace = 20;
-
         }
-        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space))//élève s'assoie
+        else if (canHeMove == true && Input.GetKeyDown(KeyCode.Space) && !isStun)//élève s'assoie
         {
             canHeMove = false;
-
-            //gameObject.transform.position = new Vector3(ChaiseNear.transform.position.x, ChaiseNear.transform.position.y + 1, ChaiseNear.transform.position.z);
             rb.isKinematic = true;
             animator.SetBool("Sit", true);
         }
 
 
-
         // Apparition de la sarbacane
-
-        if (Input.GetKeyUp(KeyCode.E) && GameObject.Find("Sarbacane(Clone)") == null)
+        if (Input.GetKeyUp(KeyCode.E) && GameObject.Find("Sarbacane(Clone)") == null && !isStun)
         {
             Rigidbody instance;
             instance = Instantiate(Sarbacane, origine.position, origine.rotation, Joueur.transform.parent) as Rigidbody;
         }
-
-        //-----------------------------------------------------------------//
-
-
-
     }
-
-
 
     private void PlayFootStepAudio()
     {
@@ -226,55 +185,23 @@ public class JoueurEleve : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
-        {
-            animator.SetBool("stun", true);
-            starSytem.SetActive(true);
-        }
+        //if (other.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
+        //{
+        //    animator.SetBool("stun", true);
+        //    starSytem.SetActive(true);
+        //}
     }
 
-    IEnumerator StunDuration()
+    public void StartStun()
     {
-        yield return new WaitForSeconds(2);
-        animator.SetBool("stun", false);
+        isStun = true;
 
+        animator.SetBool("stun", true);
+        starSytem.SetActive(true);
     }
 
-
-    void OnCollisionEnter(Collision collision)
+    public void StopStun()
     {
-
-        // Instancier les étoiles et l'animation stun
-
-        if (collision.gameObject.CompareTag("Regle") && GameObject.Find("startSystem(Clone)") == null)
-        {
-
-        }
-
-
-        //-----------------------------------------------------------------//
-
-        transform.Translate(0, 0, 0);
-        if (collision.gameObject.CompareTag("Chaise"))
-        {
-            Debug.Log("chaise detecter");
-            Debug.Log(canHeMove);
-        }
-
-        if (collision.gameObject.CompareTag("Chaise"))
-        {
-            ChaiseNear = collision.gameObject;
-            Debug.Log(ChaiseNear.transform.position.x);
-        }
+        isStun = false;
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Chaise"))
-        {
-            ChaiseNear = null;
-        }
-    }
-
-
 }
